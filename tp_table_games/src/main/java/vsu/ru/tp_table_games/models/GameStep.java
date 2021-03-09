@@ -1,2 +1,16 @@
-package vsu.ru.tp_table_games.models;public class GameStep {
+package vsu.ru.tp_table_games.models;
+
+import lombok.Data;
+
+import java.sql.Date;
+
+@Data
+public abstract class GameStep {
+
+    String game;
+    String type;
+    String senderId;
+    String roomId;
+    Date date;
+
 }

@@ -13,6 +13,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
+import { GamePageComponent } from './game-page/game-page.component';
 
 
 
@@ -24,6 +25,7 @@ import { ToolBarComponent } from './tool-bar/tool-bar.component';
     MainPageComponent,
     NavigationBarComponent,
     ToolBarComponent,
+    GamePageComponent,
   ],
   imports: [
     BrowserModule,

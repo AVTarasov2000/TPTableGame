@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <style type="text/css">
+    .base { stroke-width:2;  stroke:#000000; fill:#66cc00; }
+  </style>
+
+  <defs>
+    <rect   id="square"  x="-30" y="-30" width="60" height="60"/>
+    <use    id="base"    xlink:href="#square" class="base"/>
+  </defs>
+
+  <g transform="translate(30,30)">
+    <use xlink:href="#base"/>
+  </g>
+</svg>

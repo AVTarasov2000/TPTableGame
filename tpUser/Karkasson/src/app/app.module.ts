@@ -14,6 +14,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
 import { GamePageComponent } from './game-page/game-page.component';
+import { GameFieldComponent } from './game-field/game-field.component';
+import { HistoryPageComponent } from './history-page/history-page.component';
+import { GamesInProgressPageComponent } from './games-in-progress-page/games-in-progress-page.component';
 
 
 
@@ -26,6 +29,9 @@ import { GamePageComponent } from './game-page/game-page.component';
     NavigationBarComponent,
     ToolBarComponent,
     GamePageComponent,
+    GameFieldComponent,
+    HistoryPageComponent,
+    GamesInProgressPageComponent,
   ],
   imports: [
     BrowserModule,

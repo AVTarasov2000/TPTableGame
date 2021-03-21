@@ -3,21 +3,11 @@
     Настройка игры
   </div>
   <div class="app-modal-body">
-    <div class="row">
-    <label for="firstName">Ссылка на игру</label>
-    <input type="text" class="form-control" id="firstName" placeholder="" value="http://path/to/game" readonly required>
-    </div>
-    <div class="row">
-      <div class="col">
-        <button type="button" class="btn btn-primary">Открыть для всех пользователей</button>
-      </div>
-      <div class="col userList" >
-        <ul>
-          <li *ngFor="let item of users; let i = index">
-            {{i+1}} {{item}}
-          </li>
-        </ul>
-      </div>
+    <div class="row-cols-1">
+      <label for="gamePath">Ссылка на комнату</label>
+      <input type="text" class="form-control" id="gamePath" placeholder="" value="http://path/to/game" readonly required>
+      <label for="gameName">Имя комнаты</label>
+      <input type="text" class="form-control" id="gameName" placeholder="" value="" required>
     </div>
     <div class="row">
       <div class="col">
@@ -30,8 +20,9 @@
     </div>
   </div>
   <div class="app-modal-footer">
-    <button type="button" class="btn btn-default" (click)="modal.hide()">Закрыть</button>
-    <button type="button" class="btn btn-primary" [routerLink]="['/game']">начать игру</button>
+      <button type="button" class="btn btn-default" (click)="modal.hide()">Закрыть</button>
+      <button type="button" class="btn btn-primary">общий доступ</button>
+      <button type="button" class="btn btn-primary" [routerLink]="['/waitingRoom']">начать</button>
   </div>
 </app-game-settings-modal-dialog>
 

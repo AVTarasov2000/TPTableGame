@@ -17,6 +17,7 @@ import { GamePageComponent } from './game-page/game-page.component';
 import { GameFieldComponent } from './game-field/game-field.component';
 import { HistoryPageComponent } from './history-page/history-page.component';
 import { GamesInProgressPageComponent } from './games-in-progress-page/games-in-progress-page.component';
+import { GameSettingsModalDialogComponent } from './game-settings-modal-dialog/game-settings-modal-dialog.component';
 
 
 
@@ -32,6 +33,7 @@ import { GamesInProgressPageComponent } from './games-in-progress-page/games-in-
     GameFieldComponent,
     HistoryPageComponent,
     GamesInProgressPageComponent,
+    GameSettingsModalDialogComponent,
   ],
   imports: [
     BrowserModule,

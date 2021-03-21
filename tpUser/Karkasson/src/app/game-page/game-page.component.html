@@ -19,6 +19,15 @@
         </ul>
       </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <label for="isPassUsed" class="form-check-label">использовать пароль</label>
+        <input type="checkbox" class="form-check" id="isPassUsed">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" id="gamePassword" placeholder="пароль" value="" required>
+      </div>
+    </div>
   </div>
   <div class="app-modal-footer">
     <button type="button" class="btn btn-default" (click)="modal.hide()">Закрыть</button>

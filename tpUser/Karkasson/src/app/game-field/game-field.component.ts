@@ -73,21 +73,21 @@ export class GameFieldComponent implements OnInit {
     currentField.src = 'assets/cards/riverStart.svg';
     // @ts-ignore
     this.fieldCanvasContext.drawImage(currentField,
-      this.canvas.nativeElement.width - this.cardWidth - this.borderAlignW, 10,
+      this.canvas.nativeElement.width - this.cardWidth - this.borderAlignW, 10 + this.borderAlignH,
       this.cardWidth, this.cardHeight);
 
     const man = new Image();
     man.src = 'assets/yellowMan.png';
     // @ts-ignore
     this.fieldCanvasContext.drawImage(man,
-      this.canvas.nativeElement.width - this.cardWidth - this.borderAlignW, 10 + this.cardHeight + this.borderAlignH,
+      this.canvas.nativeElement.width - this.cardWidth - this.borderAlignW, 10 + this.borderAlignH + this.cardHeight + this.borderAlignH,
       this.cardWidth / 2, this.cardHeight / 2);
 
     // @ts-ignore
     this.fieldCanvasContext.fillStyle = '#000000';
     // @ts-ignore
     this.fieldCanvasContext.fillText('5', this.canvas.nativeElement.width - this.cardWidth / 2 - this.borderAlignW,
-      10 + this.cardHeight + this.borderAlignH);
+      10 + this.cardHeight + this.borderAlignH * 2);
 
 
     const row = new Image();

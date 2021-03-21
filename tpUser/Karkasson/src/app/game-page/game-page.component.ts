@@ -11,24 +11,6 @@ export class GamePageComponent implements OnInit {
     'user1',
     'user2',
     'user3',
-    'user1',
-    'user2',
-    'user3',
-    'user1',
-    'user2',
-    'user3',
-    'user1',
-    'user2',
-    'user3',
-    'user1',
-    'user2',
-    'user3',
-    'user1',
-    'user2',
-    'user3',
-    'user1',
-    'user2',
-    'user3'
   ];
 
   constructor() { }

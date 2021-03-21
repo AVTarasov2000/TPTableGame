@@ -20,6 +20,7 @@ import { GamesInProgressPageComponent } from './games-in-progress-page/games-in-
 import { GameSettingsModalDialogComponent } from './game-settings-modal-dialog/game-settings-modal-dialog.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { WaitingRoomPageComponent } from './waiting-room-page/waiting-room-page.component';
 
 
 
@@ -38,6 +39,7 @@ import { UserPageComponent } from './user-page/user-page.component';
     GameSettingsModalDialogComponent,
     SignInPageComponent,
     UserPageComponent,
+    WaitingRoomPageComponent,
   ],
   imports: [
     BrowserModule,

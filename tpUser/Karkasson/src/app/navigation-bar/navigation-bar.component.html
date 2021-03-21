@@ -1,7 +1,24 @@
 <mat-drawer-container class = example-container [hasBackdrop] = "true">
   <mat-drawer #drawer >
-    <mat-drawer-content>
-      mfmgjngjdfghjjjjjjsjfbzbsrvbhjxcbzrf
+    <mat-drawer-content class="nav-bar-container">
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <div class="media text-muted pt-3">
+          <svg class="bd-placeholder-img mr-2 rounded"
+               width="32" height="32"
+               xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" fill="#000000"/>
+            <image x="0" y="0" width="32" height="32" xlink:href="assets/KarkassonTableGame.png"/>
+          </svg>
+          <div class="col">
+            <strong class="d-block text-gray-dark">Karkasson</strong>
+            22.03.21 16:20 Room name: Tests. Session active.
+          </div>
+          <div class="col">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">играть</button>
+          </div>
+        </div>
+      </div>
+      <button mat-raised-button class="mat-button" color="accent">личный кабинет</button>
     </mat-drawer-content>
   </mat-drawer>
 </mat-drawer-container>

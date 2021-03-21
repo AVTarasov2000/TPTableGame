@@ -91,7 +91,7 @@ export class GameFieldComponent implements OnInit {
 
 
     const row = new Image();
-    row.src = 'assets/cards/rotatingRow.svg';
+    row.src = 'assets/rotatingRow.svg';
     // @ts-ignore
     this.fieldCanvasContext.drawImage(row,
       this.canvas.nativeElement.width - this.cardWidth - this.borderAlignW - this.borderAlignW, 10,

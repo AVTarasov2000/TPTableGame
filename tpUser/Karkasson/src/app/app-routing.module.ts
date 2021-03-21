@@ -8,6 +8,7 @@ import {HistoryPageComponent} from './history-page/history-page.component';
 import {GameFieldComponent} from './game-field/game-field.component';
 import {WaitingRoomPageComponent} from './waiting-room-page/waiting-room-page.component';
 import {SignInPageComponent} from './sign-in-page/sign-in-page.component';
+import {UserPageComponent} from './user-page/user-page.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'game', component: GameFieldComponent},
   {path: 'waitingRoom', component: WaitingRoomPageComponent},
   {path: 'signin', component: SignInPageComponent},
+  {path: 'myPage', component: UserPageComponent},
   {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
 

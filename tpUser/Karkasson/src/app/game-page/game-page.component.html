@@ -1,9 +1,38 @@
+<app-game-settings-modal-dialog #modal>
+  <div class="app-modal-header">
+    заголовок
+  </div>
+  <div class="app-modal-body">
+    <div class="row">
+    <label for="firstName">Ссылка на игру</label>
+    <input type="text" class="form-control" id="firstName" placeholder="" value="http://path/to/game" readonly required>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-primary">Открыть для всех пользователей</button>
+      </div>
+      <div class="col userList" >
+        <ul>
+          <li *ngFor="let item of users; let i = index">
+            {{i+1}} {{item}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default" (click)="modal.hide()">Закрыть</button>
+    <button type="button" class="btn btn-primary">начать игру</button>
+  </div>
+</app-game-settings-modal-dialog>
+
+
+<!----------------------------------------------------------------------------------------------------------->
 <body class="bg-light">
 <div class="container">
 
   <div class="py-5 text-center">
     <h2>Название игры</h2>
-<!--    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>-->
   </div>
 
   <div class="row">
@@ -11,7 +40,7 @@
 
       <form class="card p-2">
         <div class="input-group">
-          <button class="btn btn-primary btn-lg btn-block" type="submit" [routerLink]="['/game']">Начать игру</button>
+          <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="modal.show()">Начать игру</button>
         </div>
       </form>
 

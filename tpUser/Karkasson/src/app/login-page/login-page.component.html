@@ -1,0 +1,30 @@
+<body>
+<form class="form-signin">
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Регистрация </h1>
+  </div>
+
+  <div class="form-label-group">
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" [(ngModel)]="username" name="username" required autofocus>
+    <label for="inputEmail">Логин</label>
+  </div>
+
+  <div class="form-label-group">
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" [(ngModel)]="password" name="password" required>
+    <label for="inputPassword">Пароль</label>
+  </div>
+
+  <div class="form-label-group">
+    <input type="password" id="inputPassword2" class="form-control" placeholder="Password" required>
+    <label for="inputPassword">Повторите пароль</label>
+  </div>
+
+  <div class="form-label-group">
+    <input type="password" id="userName" class="form-control" placeholder="Password" [(ngModel)]="userName" name="userName" required>
+    <label for="userName">Имя в системе</label>
+  </div>
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onSignInButton()" [routerLink]="['/main']">Войти</button>
+
+  <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2021</p>
+</form>

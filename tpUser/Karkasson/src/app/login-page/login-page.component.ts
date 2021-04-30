@@ -36,7 +36,7 @@ export class LoginPageComponent implements OnInit {
   public trySignIn(userName: string, login: string, password: string): boolean{
     const user = new User(userName, login, password);
     let result = false;
-    this.http.post<User>('http://localhost:8080/login/check', user).subscribe(
+    this.http.post<User>('http://localhost:8080/app/login/check', user).subscribe(
       (e) => {
         if (e == null) {
           alert('ошибка регистрации');

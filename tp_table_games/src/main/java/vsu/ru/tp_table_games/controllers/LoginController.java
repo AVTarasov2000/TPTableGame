@@ -2,7 +2,7 @@ package vsu.ru.tp_table_games.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import vsu.ru.tp_table_games.models.User;
+import vsu.ru.tp_table_games.models.dto.UserDto;
 
 @Controller
 public class LoginController {
@@ -10,10 +10,10 @@ public class LoginController {
 
     @PostMapping("/login/check")
     @ResponseBody
-    public User checkLogin(@RequestBody User user){
+    public UserDto checkLogin(@RequestBody UserDto userDto){
         System.out.println("test is done");
-        System.out.println(user);
-        return user;
+        System.out.println(userDto);
+        return userDto;
     }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {LoginService} from '../services/login-service';
 import {User} from '../classes/user/user';
 import { HttpClient} from '@angular/common/http';
@@ -11,7 +11,9 @@ import { HttpClient} from '@angular/common/http';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute, private loginService: LoginService, private http: HttpClient) { }
+  constructor(private router: Router,
+              private loginService: LoginService,
+              private http: HttpClient) { }
 
   login = '';
   password = '';
@@ -41,6 +43,7 @@ export class LoginPageComponent implements OnInit {
         }
         else {
           this.loginService.me = e;
+          this.router.navigate(['/main']);
         }
       },
       err => {alert('соединение с сервером потеряно');

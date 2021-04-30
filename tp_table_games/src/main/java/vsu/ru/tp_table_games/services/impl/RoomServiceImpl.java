@@ -1,4 +1,6 @@
-package vsu.ru.tp_table_games.services;
+package vsu.ru.tp_table_games.services.impl;
+
+import vsu.ru.tp_table_games.services.RoomService;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@
   </div>
 
   <div class="form-label-group">
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" [(ngModel)]="username" name="username" required autofocus>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" [(ngModel)]="login" name="username" required autofocus>
     <label for="inputEmail">Логин</label>
   </div>
 
@@ -14,7 +14,7 @@
     <label for="inputPassword">Пароль</label>
   </div>
 
-  <button class="btn btn-lg btn-primary btn-block" type="submit"  [routerLink]="['/main']">Войти</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="signIn()">Войти</button>
   <button class="btn btn-lg btn-primary btn-block" type="submit"  [routerLink]="['/login']">перейти к регистрации</button>
 
   <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2021</p>

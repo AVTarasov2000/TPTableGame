@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import vsu.ru.tp_table_games.models.dto.UserDto;
 
 @Service
-public class LoginServiceImpl implements LoginService {
+public class RegisterServiceImpl implements RegisterService {
     @Override
     public UserDto provide(UserDto userDto) {
         return null; //todo

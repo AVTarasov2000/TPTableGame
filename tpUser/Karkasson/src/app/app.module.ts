@@ -21,7 +21,8 @@ import { GameSettingsModalDialogComponent } from './game-settings-modal-dialog/g
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { WaitingRoomPageComponent } from './waiting-room-page/waiting-room-page.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import {LoginService} from './services/login-service';
 
 
 
@@ -51,8 +52,9 @@ import { WaitingRoomPageComponent } from './waiting-room-page/waiting-room-page.
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

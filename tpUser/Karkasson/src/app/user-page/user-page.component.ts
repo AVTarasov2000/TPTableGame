@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginService} from '../services/login-service';
-import {User} from '../classes/user/user';
+import {LoginService} from '../services/login.service';
+import {User} from '../classes/user';
 import { HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 
@@ -21,7 +21,6 @@ export class UserPageComponent implements OnInit {
               private http: HttpClient) { }
 
   ngOnInit(): void {
-    alert('test');
   }
 
   changePass(): void {
@@ -40,6 +39,7 @@ export class UserPageComponent implements OnInit {
   }
 
   changeName(): void {
+    // todo
     const user = new User(this.newName, this.loginService.me.login, this.password);
     this.http.post<User>('http://localhost:8080/app/personal/change/password', user).subscribe(
       (e) => {

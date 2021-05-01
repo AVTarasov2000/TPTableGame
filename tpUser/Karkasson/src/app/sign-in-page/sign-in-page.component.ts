@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../classes/user/user';
+import {User} from '../classes/user';
 import {ActivatedRoute, Router} from '@angular/router';
 import { HttpClient} from '@angular/common/http';
-import {LoginService} from '../services/login-service';
+import {LoginService} from '../services/login.service';
+import {CrossPageInformation} from '../services/crossPageInformation';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -14,7 +15,7 @@ export class SignInPageComponent implements OnInit {
   password = '';
 
   constructor(private router: Router,
-              private loginService: LoginService,
+              private crossPageInformation: CrossPageInformation,
               private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -28,7 +29,7 @@ export class SignInPageComponent implements OnInit {
           alert('ошибка входа');
         }
         else {
-          this.loginService.me = e;
+          this.crossPageInformation.currentUser = e;
           this.router.navigate(['/main']);
         }
       },

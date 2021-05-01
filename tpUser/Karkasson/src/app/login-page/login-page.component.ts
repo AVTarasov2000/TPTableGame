@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {LoginService} from '../services/login-service';
-import {User} from '../classes/user/user';
+import {LoginService} from '../services/login.service';
+import {User} from '../classes/user';
 import { HttpClient} from '@angular/common/http';
+import {CrossPageInformation} from '../services/crossPageInformation';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +13,7 @@ import { HttpClient} from '@angular/common/http';
 export class LoginPageComponent implements OnInit {
 
   constructor(private router: Router,
-              private loginService: LoginService,
+              private crossPageInformation: CrossPageInformation,
               private http: HttpClient) { }
 
   login = '';
@@ -42,7 +43,7 @@ export class LoginPageComponent implements OnInit {
           alert('ошибка регистрации');
         }
         else {
-          this.loginService.me = e;
+          this.crossPageInformation.currentUser = e;
           this.router.navigate(['/main']);
         }
       },

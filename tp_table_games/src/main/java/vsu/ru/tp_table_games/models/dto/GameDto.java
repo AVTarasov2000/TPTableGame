@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GameDto {
-    private long id;
-    private long capacity;
+    private Long id;
+    private Long capacity;
     private String rules;
+    private String information;
 }

@@ -1,4 +1,4 @@
-package vsu.ru.tp_table_games.models.dto;
+package vsu.ru.tp_table_games.models.andreysDTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,5 +1,6 @@
 
 <main role="main" class="container">
+
   <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
     <svg class="bd-placeholder-img mr-2 rounded"
          width="48" height="48"
@@ -11,34 +12,36 @@
       <h6 class="mb-0 text-white lh-100">Активные комнаты игры: Karkasson</h6>
     </div>
   </div>
-
-  <div class="my-3 p-3 bg-white rounded shadow-sm">
-    <div class="media text-muted pt-3">
-      <div class="col">
-        <strong class="d-block text-gray-dark">Присоедениться: Gamers.</strong>
-        участники: 3/6
-      </div>
-      <div class="col">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [routerLink]="['/waitingRoom']">Присоедениться</button>
-      </div>
-    </div>
-    <div class="media text-muted pt-3">
-      <div class="col">
-        <strong class="d-block text-gray-dark">Присоедениться: Soul hunters.</strong>
-        участники: 4/6
-      </div>
-      <div class="col">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [routerLink]="['/waitingRoom']">Присоедениться</button>
-      </div>
-    </div>
-    <div class="media text-muted pt-3">
-      <div class="col">
-        <strong class="d-block text-gray-dark">Имя комнаты: Adventure.</strong>
-        участники: 1/6
-      </div>
-      <div class="col">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [routerLink]="['/waitingRoom']">Присоедениться</button>
+  <div *ngFor="let room of rooms">
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <div class="media text-muted pt-3">
+        <div class="col">
+          <strong class="d-block text-gray-dark">Присоедениться: {{room.name}}.</strong>
+          участники: 3/6
+        </div>
+        <div class="col">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [routerLink]="['/waitingRoom']">Присоедениться{{room.ref}}</button>
+        </div>
       </div>
     </div>
   </div>
+<!--    <div class="media text-muted pt-3">-->
+<!--      <div class="col">-->
+<!--        <strong class="d-block text-gray-dark">Присоедениться: Soul hunters.</strong>-->
+<!--        участники: 4/6-->
+<!--      </div>-->
+<!--      <div class="col">-->
+<!--        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [routerLink]="['/waitingRoom']">Присоедениться</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="media text-muted pt-3">-->
+<!--      <div class="col">-->
+<!--        <strong class="d-block text-gray-dark">Имя комнаты: Adventure.</strong>-->
+<!--        участники: 1/6-->
+<!--      </div>-->
+<!--      <div class="col">-->
+<!--        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [routerLink]="['/waitingRoom']">Присоедениться</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </main>

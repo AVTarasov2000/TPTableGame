@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import vsu.ru.tp_table_games.models.dto.UserDto;
+import vsu.ru.tp_table_games.models.andreysDTOs.UserDto;
 import vsu.ru.tp_table_games.services.RegisterService;
 
 @Controller

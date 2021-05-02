@@ -5,22 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//import javax.persistence.*;
+import javax.persistence.*;
 
 @Data
-//@Entity
-//@Table(name = "sessions", schema = "public")
+@Entity
+@Table(name = "sessions", schema = "public")
 @NoArgsConstructor
 @AllArgsConstructor
 
 public class Session {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-//    @Column(name = "owner_id")
-    private long ownerId;
-//    @Column(name = "title")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "owner_id")
+    private Long ownerId;
+    @Column(name = "title")
     private String title;
-//    @Column(name = "password")
+    @Column(name = "password")
     private String password;
 }

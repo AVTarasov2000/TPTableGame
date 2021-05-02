@@ -1,9 +1,16 @@
 package vsu.ru.tp_table_games.models.enums;
 
 public enum PrivacyStatus {
-    PUBLIC,
-    PRIVATE;
+    PUBLIC("PUBLIC"),
+    PRIVATE("PRIVATE");
 
-    PrivacyStatus(){
+    private  final String status;
+
+    PrivacyStatus(String status){
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

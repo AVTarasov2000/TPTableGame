@@ -1,8 +1,16 @@
 package vsu.ru.tp_table_games.models.enums;
 
 public enum UserStatus {
-    REGISTERED,
-    GUEST;
+    REGISTERED(true),
+    GUEST(false);
 
-    UserStatus(){}
+    private final boolean status;
+
+    UserStatus(boolean status){
+        this.status = status;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
 }

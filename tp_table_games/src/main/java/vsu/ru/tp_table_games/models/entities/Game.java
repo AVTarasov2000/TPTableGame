@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -20,8 +22,11 @@ public class Game {
     private Long capacity;
     @Column(name = "rules")
     private String rules;
+    @Column(name = "title")
+    private String title;
     @Column(name = "information")
     private String information;
     @Column(name = "images")
     private String images;
+
 }

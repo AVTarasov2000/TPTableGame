@@ -1,9 +1,10 @@
 package vsu.ru.tp_table_games.models.entities;
 
-//import vsu.ru.tp_table_games.models.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import vsu.ru.tp_table_games.models.enums.PrivacyStatus;
+import vsu.ru.tp_table_games.models.enums.SessionStatus;
 
 import javax.persistence.*;
 
@@ -23,4 +24,9 @@ public class Session {
     private String title;
     @Column(name = "password")
     private String password;
+    @Column(name = "privacy")
+    private PrivacyStatus privacy;
+    @Column(name = "session_status")
+    private SessionStatus sessionStatus;
+
 }

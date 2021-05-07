@@ -1,13 +1,13 @@
 package vsu.ru.tp_table_games.models.enums;
 
-public enum GameStatus {
+public enum SessionStatus {
     COMPLETED("COMPLETED"),
     STARTED("STARTED"),
     PREPARING("PREPARING");
 
     private final String status;
 
-    GameStatus(String status){
+    SessionStatus(String status){
         this.status = status;
     }
 

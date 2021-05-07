@@ -3,6 +3,7 @@ package vsu.ru.tp_table_games.models.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import vsu.ru.tp_table_games.models.enums.UserStatus;
 
 import javax.persistence.*;
 
@@ -23,4 +24,6 @@ public class User {
     private String name;
     @Column(name = "password")
     private String password;
+    @Column(name = "is_registered")
+    private UserStatus isRegistered;
 }

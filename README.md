@@ -11,6 +11,6 @@
 
 # Документация
 * [Техническое задание pdf](https://github.com/AVTarasov2000/TPTableGame/blob/main/Documentation/ТЗ%20Настольный%20сервер%20финальная%20версия.pdf)
-* [Техническое задание docx](https://github.com/AVTarasov2000/TPTableGame/blob/main/Documentation/ТЗ%20Настольный%20сервер%20финальная%20версия.docx)
-* [Курсовой проект pdf](https://github.com/AVTarasov2000/TPTableGame/blob/main/Documentation/Курсовой%20проект%20к%201%20аттестации.pdf)
-* [Курсовой проект docx](https://github.com/AVTarasov2000/TPTableGame/blob/main/Documentation/Курсовой%20проект%20к%201%20аттестации.docx)
+* [Курсовой проект pdf](https://github.com/AVTarasov2000/TPTableGame/blob/main/Documentation/Курсовой%20проект%20к%202%20аттестации.pdf)
+* [Отчет о проведенных работах на 07.05.2021](https://github.com/AVTarasov2000/TPTableGame/blob/main/Documentation/Отчет%20о%20к%20проведенных%20работах.pdf)
+* [Диаграммы в формате jpeg](https://github.com/AVTarasov2000/TPTableGame/tree/main/Documentation/Diagrams)

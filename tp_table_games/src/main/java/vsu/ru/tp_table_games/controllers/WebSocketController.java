@@ -5,8 +5,8 @@ import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import vsu.ru.tp_table_games.models.GameStep;
-import vsu.ru.tp_table_games.models.ServerStepResponse;
+import vsu.ru.tp_table_games.models.entities.GameStep;
+import vsu.ru.tp_table_games.models.entities.ServerStepResponse;
 import vsu.ru.tp_table_games.services.GameStepProcessable;
 import vsu.ru.tp_table_games.services.RoomService;
 

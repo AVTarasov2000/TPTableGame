@@ -1,5 +1,5 @@
 package vsu.ru.tp_table_games.models.mappers;
-import vsu.ru.tp_table_games.models.dto.SessionDto;
+import vsu.ru.tp_table_games.models.dtos.SessionDto;
 import vsu.ru.tp_table_games.models.entities.Session;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

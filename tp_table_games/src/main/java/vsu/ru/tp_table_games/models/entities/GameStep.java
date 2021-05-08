@@ -1,4 +1,4 @@
-package vsu.ru.tp_table_games.models;
+package vsu.ru.tp_table_games.models.entities;
 
 import lombok.Data;
 

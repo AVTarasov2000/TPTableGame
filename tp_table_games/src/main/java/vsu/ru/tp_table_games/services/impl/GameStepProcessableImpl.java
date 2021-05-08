@@ -1,7 +1,7 @@
 package vsu.ru.tp_table_games.services.impl;
 
-import vsu.ru.tp_table_games.models.GameStep;
-import vsu.ru.tp_table_games.models.ServerStepResponse;
+import vsu.ru.tp_table_games.models.entities.GameStep;
+import vsu.ru.tp_table_games.models.entities.ServerStepResponse;
 import vsu.ru.tp_table_games.services.GameStepProcessable;
 
 public class GameStepProcessableImpl implements GameStepProcessable {

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import vsu.ru.tp_table_games.models.andreysDTOs.UserDto;
+import vsu.ru.tp_table_games.models.dtos.UserDto;
 import vsu.ru.tp_table_games.services.RegisterService;
 
 @Controller
@@ -19,7 +19,6 @@ public class RegisterController {
     @PostMapping("/register")
     @ResponseBody
     public UserDto Register(@RequestBody UserDto userDto){
-        UserDto resUser = registerService.provide(userDto);
-        return resUser;
+        return registerService.provide(userDto);
     }
 }

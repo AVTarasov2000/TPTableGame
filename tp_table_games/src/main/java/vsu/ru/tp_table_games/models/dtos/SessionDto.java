@@ -15,6 +15,7 @@ public class SessionDto {
     private Long id;
     private Long ownerId;
     private String title;
+    private String ref;
     private String password;
     private PrivacyStatus privacy;
     private SessionStatus sessionStatus;

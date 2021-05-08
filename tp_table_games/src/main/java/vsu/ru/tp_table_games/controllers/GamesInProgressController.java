@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import vsu.ru.tp_table_games.models.dtos.GameDto;
-import vsu.ru.tp_table_games.models.dtos.RoomDto;
+import vsu.ru.tp_table_games.models.dtos.SessionDto;
 import vsu.ru.tp_table_games.services.GamesInProgressService;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class GamesInProgressController {
 
     @PostMapping("/activeGames")
     @ResponseBody
-    public List <RoomDto> activeGames(GameDto gameDto){
+    public List <SessionDto> activeGames(GameDto gameDto){
         return gamesInProgressService.activeRooms(gameDto);
     }
 }

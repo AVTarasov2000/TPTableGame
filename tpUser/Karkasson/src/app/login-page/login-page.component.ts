@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {LoginService} from '../services/login-service';
-import {User} from '../classes/user/user';
+import {ActivatedRoute, Router} from '@angular/router';
+import {LoginService} from '../services/login.service';
+import {User} from '../classes/user';
 import { HttpClient} from '@angular/common/http';
+import {CrossPageInformation} from '../services/crossPageInformation';
 
 @Component({
   selector: 'app-login-page',
@@ -11,7 +12,9 @@ import { HttpClient} from '@angular/common/http';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute, private loginService: LoginService, private http: HttpClient) { }
+  constructor(private router: Router,
+              private crossPageInformation: CrossPageInformation,
+              private http: HttpClient) { }
 
   login = '';
   password = '';
@@ -34,13 +37,14 @@ export class LoginPageComponent implements OnInit {
   public trySignIn(userName: string, login: string, password: string): boolean{
     const user = new User(userName, login, password);
     let result = false;
-    this.http.post<User>('http://localhost:8080/login/check', user).subscribe(
+    this.http.post<User>('http://localhost:8080/app/login/check', user).subscribe(
       (e) => {
         if (e == null) {
           alert('ошибка регистрации');
         }
         else {
-          this.loginService.me = e;
+          this.crossPageInformation.currentUser = e;
+          this.router.navigate(['/main']);
         }
       },
       err => {alert('соединение с сервером потеряно');

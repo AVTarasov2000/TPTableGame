@@ -22,7 +22,8 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { WaitingRoomPageComponent } from './waiting-room-page/waiting-room-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import {LoginService} from './services/login-service';
+import {LoginService} from './services/login.service';
+import {CrossPageInformation} from './services/crossPageInformation';
 
 
 
@@ -54,7 +55,7 @@ import {LoginService} from './services/login-service';
     MatButtonModule,
     HttpClientModule,
   ],
-  providers: [LoginService],
+  providers: [LoginService, CrossPageInformation],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {PlayedGame} from '../classes/played-game';
+import {Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {CrossPageInformation} from '../services/crossPageInformation';
+import {Room} from '../classes/Room';
 
 @Component({
   selector: 'app-games-in-progress-page',
@@ -7,9 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GamesInProgressPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+              private http: HttpClient,
+              private crossPageInformation: CrossPageInformation) { }
+
+  rooms: Room[] = [];
 
   ngOnInit(): void {
+    this.http.post<Room[]>('http://localhost:8080/app/activeGames', this.crossPageInformation.chosedGame).subscribe(
+      (rooms) => {
+        if (rooms == null) {
+          alert('неверный пароль');
+        }
+        else {
+          this.rooms = rooms;
+        }
+      },
+      err => {alert('соединение с сервером потеряно'); }
+    );
   }
 
 }

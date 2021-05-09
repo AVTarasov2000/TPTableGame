@@ -29,14 +29,14 @@ public class Session {
     private SessionStatus sessionStatus;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(table = "users", name = "createdSessions")
+    @JoinColumn(name = "users_id")
     private User owner;
 
     @ManyToMany(mappedBy = "attendedSessions", fetch = FetchType.LAZY)
     private List<User> participants;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(table = "game", name = "sessions")
+    @JoinColumn(name = "games_id")
     private Game game;
 
 }

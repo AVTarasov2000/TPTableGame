@@ -26,13 +26,13 @@ public class User {
     @Column(name = "password")
     private String password;
     @Column(name = "is_registered")
-    private UserStatus isRegistered;
+    private boolean isRegistered;
 
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "users_sessions",
-            joinColumns = @JoinColumn(table = "users", name = "id"),
-            inverseJoinColumns = @JoinColumn(table = "sessions", name = "id")
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "session_id")
     )
     private List<Session> attendedSessions;
 

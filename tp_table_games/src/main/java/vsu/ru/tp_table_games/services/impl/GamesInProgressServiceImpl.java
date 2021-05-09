@@ -20,7 +20,7 @@ public class GamesInProgressServiceImpl implements GamesInProgressService {
 
     @Override
     public List<SessionDto> activeRooms(GameDto gameDto) {
-        return SessionsMapper.INSTANCE.sessionToDto(sessionRepository.findAllBySessionStatus_Started());
+        return SessionsMapper.INSTANCE.sessionToDto(sessionRepository.findAllBySessionStatus(SessionStatus.STARTED));
 //        TODO is active sessions or sessions by game?
     }
 }

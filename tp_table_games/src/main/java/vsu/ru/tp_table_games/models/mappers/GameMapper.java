@@ -1,5 +1,5 @@
 package vsu.ru.tp_table_games.models.mappers;
-import vsu.ru.tp_table_games.models.dto.GameDto;
+import vsu.ru.tp_table_games.models.dtos.GameDto;
 import vsu.ru.tp_table_games.models.entities.Game;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -11,8 +11,8 @@ public interface GameMapper {
     GameMapper INSTANCE = Mappers.getMapper(GameMapper.class);
 
     GameDto gameToDto(Game game);
-    List<GameDto> itemToDto(Iterable<Game> games);
+    List<GameDto> gameToDto(Iterable<Game> games);
 
-    Game dtoToItems(GameDto dto);
-    List<Game> dtoToItems(Iterable<GameDto> dtoIterable);
+    Game dtoToGame(GameDto dto);
+    List<Game> dtoToGame(Iterable<GameDto> dtoIterable);
 }

@@ -11,9 +11,9 @@ import java.util.List;
 public interface SessionsMapper {
     SessionsMapper INSTANCE = Mappers.getMapper(SessionsMapper.class);
 
-    SessionDto gameToDto(Session session);
-    List<SessionDto> itemToDto(Iterable<Session> sessions);
+    SessionDto sessionToDto(Session session);
+    List<SessionDto> sessionToDto(Iterable<Session> sessions);
 
-    Session dtoToItems(SessionDto dto);
-    List<Session> dtoToItems(Iterable<SessionDto> dtoIterable);
+    Session dtoToSession(SessionDto dto);
+    List<Session> dtoToSession(Iterable<SessionDto> dtoIterable);
 }

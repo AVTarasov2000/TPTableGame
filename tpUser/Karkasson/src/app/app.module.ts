@@ -24,6 +24,8 @@ import { WaitingRoomPageComponent } from './waiting-room-page/waiting-room-page.
 import { HttpClientModule } from '@angular/common/http';
 import {LoginService} from './services/login.service';
 import {CrossPageInformation} from './services/crossPageInformation';
+import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
+import {myRxStompConfig} from './services/config/myRxStompConfig';
 
 
 
@@ -55,7 +57,18 @@ import {CrossPageInformation} from './services/crossPageInformation';
     MatButtonModule,
     HttpClientModule,
   ],
-  providers: [LoginService, CrossPageInformation],
+  providers: [LoginService,
+    CrossPageInformation,
+    {
+      provide: InjectableRxStompConfig,
+      useValue: myRxStompConfig,
+    },
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+      deps: [InjectableRxStompConfig],
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import vsu.ru.tp_table_games.models.enums.UserStatus;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Data
@@ -26,4 +27,15 @@ public class User {
     private String password;
     @Column(name = "is_registered")
     private UserStatus isRegistered;
+
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_sessions",
+            joinColumns = @JoinColumn(table = "users", name = "id"),
+            inverseJoinColumns = @JoinColumn(table = "sessions", name = "id")
+    )
+    private List<Session> attendedSessions;
+
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
+    private List<Session> createdSessions;
 }

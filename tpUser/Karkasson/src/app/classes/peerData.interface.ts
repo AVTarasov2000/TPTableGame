@@ -1,5 +1,6 @@
 export interface PeerData {
   id: string;
+  target: string;
   data: any;
 }
 
@@ -10,6 +11,7 @@ export interface UserInfo {
 
 export interface SignalInfo {
   user: string;
+  target: string;
   signal: any;
 }
 

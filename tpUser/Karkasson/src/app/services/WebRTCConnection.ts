@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { Instance, SignalData} from 'simple-peer';
 import {PeerData, UserInfo} from '../classes/peerData.interface';
+import {UserPeer} from '../classes/UserPeer';
+import {logger} from 'codelyzer/util/logger';
 
 
 
@@ -27,6 +29,7 @@ export class WebRTCConnection{
 
   public currentPeer: Instance;
 
+  public usersPeers: UserPeer[] = [];
 
   constructor() {
     this.users = new BehaviorSubject(new Array<UserInfo>());
@@ -45,25 +48,25 @@ export class WebRTCConnection{
   }
 
 
-  public createPeer(stream: any, roomId: string, initiator: boolean): Instance {
+  public createPeer(stream: any, roomId: string, initiator: boolean, target): Instance {
     const peer = new SimplePeer({ initiator, stream, trickle: false });
 
     peer.on('signal', data => {
       const stringData = JSON.stringify(data);
-      this.onSignalToSend.next({ id: roomId, data: stringData }); //todo
+      this.onSignalToSend.next({ id: roomId, data: stringData, target});
     });
 
     peer.on('stream', data => {
       console.log('on stream', data);
-      this.onStream.next({ id: roomId, data });
+      this.onStream.next({ id: roomId, data, target});
     });
 
     peer.on('connect', () => {
-      this.onConnect.next({ id: roomId, data: null });
+      this.onConnect.next({ id: roomId, data: null, target});
     });
 
     peer.on('data', data => {
-      this.onData.next({ id: roomId, data });
+      this.onData.next({ id: roomId, data, target});
     });
 
     return peer;
@@ -73,11 +76,21 @@ export class WebRTCConnection{
 
   public signalPeer(userId: string, signal: string, stream: any): void {
     const signalObject = JSON.parse(signal);
-    if (this.currentPeer) {
-      this.currentPeer.signal(signalObject);
+    let tmp: UserPeer = {user: '', peer: null};
+    for (let i = 0; i < this.usersPeers.length; i++) {
+      console.log(this.usersPeers[i].user);
+      console.log(userId);
+      console.log(this.usersPeers[i].user == userId);
+      if (this.usersPeers[i].user == userId){
+        tmp = this.usersPeers[i];
+      }
+    }
+    if (tmp.peer) {
+      tmp.peer.signal(signalObject);
     } else {
-      this.currentPeer = this.createPeer(stream, userId, false);
-      this.currentPeer.signal(signalObject);
+      // todo roomid
+      tmp.peer = this.createPeer(stream, '0', false, userId);
+      tmp.peer.signal(signalObject);
     }
   }
 

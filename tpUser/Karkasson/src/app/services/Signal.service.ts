@@ -11,7 +11,7 @@ import {SignalInfo, UserInfo} from '../classes/peerData.interface';
 export class SignalrService {
 
 
-  private newPeer = new Subject<UserInfo>();
+  private newPeer = new Subject<string[]>();
   public newPeer$ = this.newPeer.asObservable();
 
   private helloAnswer = new Subject<UserInfo>();
@@ -62,16 +62,16 @@ export class SignalrService {
     this.disconnectedPeer.next(JSON.parse(data));
   }
 
-  public sendSignal(room, signal, currentUser): void{
-    const message: SignalInfo = {signal, user: currentUser};
+  public sendSignal(room, message: SignalInfo): void{
+    // const message: SignalInfo = {signal, user: currentUser, target};
     console.log(message);
     this.rxStompService.publish({ destination: '/app/videoChat/' + room + '/sendSignal',
       body: JSON.stringify(message)});
     // this.signal.next({ user, signal });
   }
 
-  public sendSignalToRoom(signal: string, room: string, currentUser): void {
-    this.sendSignal(room, signal, currentUser);
+  public sendSignalToRoom(room: string, message: SignalInfo): void {
+    this.sendSignal(room, message);
   }
 
   public sendNewUserSignal(currentUser, roomId): void{

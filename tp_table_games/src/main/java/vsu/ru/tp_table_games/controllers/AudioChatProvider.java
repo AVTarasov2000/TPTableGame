@@ -27,9 +27,7 @@ public class AudioChatProvider {
         users.add((String) chatMessage.get("user"));
         for (String i:
                 users) {
-            if(i.compareTo((String) chatMessage.get("user")) != 0) {
-                messagingTemplate.convertAndSend("/user/" + i + "/socket/userArrived", chatMessage);
-            }
+                messagingTemplate.convertAndSend("/user/" + i + "/socket/userArrived", users);
         }
     }
 
@@ -37,11 +35,13 @@ public class AudioChatProvider {
     public void sendSignal(@Payload JSONObject chatMessage, @DestinationVariable String id) {
         System.out.println(chatMessage);
 //        users.add((String) chatMessage.get("user"));
-        for (String i:
-                users) {
-            if(i.compareTo((String) chatMessage.get("user")) != 0) {
-                messagingTemplate.convertAndSend("/user/" + i + "/socket/sendSignal", chatMessage);
-            }
-        }
+        messagingTemplate.convertAndSend("/user/" + (String) chatMessage.get("target") + "/socket/sendSignal", chatMessage);
+
+//        for (String i:
+//                users) {
+//            if(i.compareTo((String) chatMessage.get("user")) != 0) {
+//                messagingTemplate.convertAndSend("/user/" + i + "/socket/sendSignal", chatMessage);
+//            }
+//        }
     }
 }

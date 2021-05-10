@@ -4,6 +4,8 @@ import {SignalrService} from '../services/Signal.service';
 import {Subscription} from 'rxjs';
 import {PeerData, SignalInfo, UserInfo} from '../classes/peerData.interface';
 import {CrossPageInformation} from '../services/crossPageInformation';
+import {User} from '../classes/user';
+import {UserPeer} from '../classes/UserPeer';
 
 @Component({
   selector: 'app-waiting-room-page',
@@ -12,7 +14,7 @@ import {CrossPageInformation} from '../services/crossPageInformation';
 })
 export class WaitingRoomPageComponent implements OnInit, OnDestroy {
 
-  constructor(private rtcService: WebRTCConnection,
+  constructor(public rtcService: WebRTCConnection,
               private signalR: SignalrService,
               private crossPageInformation: CrossPageInformation,
               private renderer: Renderer2) { }
@@ -20,6 +22,9 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
 
   @ViewChild('videoPlayer') videoPlayer: ElementRef;
   @ViewChild('videoContainer') videoContainer: ElementRef;
+
+
+  // public users: UserPeer[] = [];
 
 
   private stream: any;
@@ -35,8 +40,14 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.subscriptions.add(this.signalR.newPeer$.subscribe((user: UserInfo) => {
-      this.rtcService.newUser(user);
+    this.subscriptions.add(this.signalR.newPeer$.subscribe((user: string[]) => {
+      console.log(user);
+      this.rtcService.usersPeers = [];
+      // tslint:disable-next-line:forin
+      for (const userKey in user) {
+        this.rtcService.usersPeers.push({user: userKey, peer: null});
+      }
+      // this.rtcService.newUser(user);
       // this.signalR.sayHello(this.currentUser, user.connectionId);
     }));
 
@@ -60,7 +71,7 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
       else {
         login = '';
       }
-      this.signalR.sendSignalToRoom(data.data, data.id, login);
+      this.signalR.sendSignalToRoom(data.id, {signal: data.data, user: login, target: data.target});
     }));
 
     this.subscriptions.add(this.rtcService.onData$.subscribe((data: PeerData) => {
@@ -86,7 +97,10 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
 
   public onVoiceChatStarted(): void {
     // todo roomId
-    this.rtcService.currentPeer = this.rtcService.createPeer(this.stream, '0', true);
+    for (let i = 0; i < this.rtcService.usersPeers.length; i++) {
+      // this.rtcService.currentPeer = this.rtcService.createPeer(this.stream, '0', true, this.users[i].user);
+      this.rtcService.usersPeers[i].peer = this.rtcService.createPeer(this.stream, '0', true, this.rtcService.usersPeers[i].user);
+    }
   }
 
   public async saveUsername(): Promise<void> {

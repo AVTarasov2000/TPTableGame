@@ -40,6 +40,20 @@ export class UserPageComponent implements OnInit {
     );
   }
 
+  public getName(): string{
+    if (this.crossPageInformation.currentUser){
+      return this.crossPageInformation.currentUser.name;
+    }
+    return '';
+  }
+
+  public getLogin(): string{
+    if (this.crossPageInformation.currentUser){
+      return this.crossPageInformation.currentUser.login;
+    }
+    return '';
+  }
+
   changePass(): void {
     // todo
     const user = {name: this.newName, login: this.crossPageInformation.currentUser.login, password: this.password, newPassword: this.newPassword};

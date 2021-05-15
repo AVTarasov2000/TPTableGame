@@ -23,7 +23,7 @@ export class SignInPageComponent implements OnInit {
 
   public trySignIn(userName: string, login: string, password: string): void{
     const user = new User(userName, login, password);
-    this.http.post<User>('http://localhost:8080/app/login/check', user).subscribe(
+    this.http.post<User>('http://localhost:8080/app/login/authentication', user).subscribe(
       (e) => {
         if (e == null) {
           alert('ошибка входа');

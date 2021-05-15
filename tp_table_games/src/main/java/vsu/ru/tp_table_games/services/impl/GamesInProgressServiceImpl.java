@@ -46,8 +46,9 @@ public class GamesInProgressServiceImpl implements GamesInProgressService {
     @Override
     public List<SessionDto> getSessionHistoryByLogin(String login) {
         User user = userRepository.findByLogin(login).orElse(null);
+
         if (user != null) {
-            return SessionsMapper.INSTANCE.sessionToDto(sessionRepository.findAllByParticipants(user.getId()));
+            return SessionsMapper.INSTANCE.sessionToDto(user.getAttendedSessions());
         }
         return new ArrayList<>();
     }

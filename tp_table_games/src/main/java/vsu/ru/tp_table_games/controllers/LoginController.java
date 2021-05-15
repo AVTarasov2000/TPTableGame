@@ -19,7 +19,4 @@ public class LoginController {
     public UserDto checkLogin(@RequestBody LoginUserDto userDto){
         return loginService.provide(userDto);
     }
-
-
-
 }

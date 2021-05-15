@@ -25,9 +25,7 @@ public class WebSocketController {
     @MessageMapping("/stepProcessor/room/{roomId}")
     public void processMessage(@Payload GameStep gameStep, @DestinationVariable Long roomId) {
         ServerStepResponse response = stepSaver.processStep(gameStep);
-
         List <UserDto> userIds = roomService.getUsersInRoom(roomId);
-
         for (UserDto user :
                 userIds) {
             messagingTemplate.convertAndSend(

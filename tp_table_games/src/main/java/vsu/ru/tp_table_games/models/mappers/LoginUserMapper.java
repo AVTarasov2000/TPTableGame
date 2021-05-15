@@ -3,6 +3,7 @@ package vsu.ru.tp_table_games.models.mappers;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import vsu.ru.tp_table_games.models.dtos.LoginUserDto;
+import vsu.ru.tp_table_games.models.dtos.UserDto;
 import vsu.ru.tp_table_games.models.entities.User;
 
 import java.util.List;
@@ -16,4 +17,10 @@ public interface LoginUserMapper {
 
     User dtoToUser(LoginUserDto dto);
     List<User> dtoToUser(Iterable<LoginUserDto> dtoIterable);
+
+    UserDto loginToDto(LoginUserDto dto);
+    List<UserDto> loginToDto(Iterable<LoginUserDto> dtoIterable);
+
+    LoginUserDto dtoToLogin(UserDto dto);
+    List<LoginUserDto> dtoToLogin(Iterable<UserDto> dtoIterable);
 }

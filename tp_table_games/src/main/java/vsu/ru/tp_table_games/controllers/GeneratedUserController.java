@@ -7,18 +7,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import vsu.ru.tp_table_games.models.dtos.LoginUserDto;
-import vsu.ru.tp_table_games.services.UserService;
+import vsu.ru.tp_table_games.models.dtos.UserDto;
+import vsu.ru.tp_table_games.services.GeneratedUserService;
+import vsu.ru.tp_table_games.services.LoginService;
 
 @Controller
-@RequestMapping("/app/user")
-public class DeleteUserController {
-    @Autowired
-    private UserService userService;
+@RequestMapping("/app/generate")
+public class GeneratedUserController {
 
-    @PostMapping("/delete")
+    @Autowired
+    private GeneratedUserService generatedUserService;
+
+    @PostMapping("/user")
     @ResponseBody
-    public void userDelete(@RequestBody LoginUserDto userDto){
-        userService.delete(userDto);
+    public UserDto checkLogin(@RequestBody LoginUserDto userDto){
+        return generatedUserService.generateUnregisteredUser(userDto.getLogin());
     }
+
 
 }

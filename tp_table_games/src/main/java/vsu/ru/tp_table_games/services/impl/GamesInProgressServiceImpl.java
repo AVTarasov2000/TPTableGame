@@ -57,13 +57,7 @@ public class GamesInProgressServiceImpl implements GamesInProgressService {
         Session targetSession = sessionRepository.findById(id).orElse(null);
         User addedUser = userRepository.findByLogin(login).orElse(null);
         List<User> users = new ArrayList<>();
-        if (targetSession != null) {
-            if (addedUser == null) {
-                Date date = new Date();
-                String salt = date.toString();
-                addedUser = LoginUserMapper.INSTANCE.dtoToUser(new LoginUserDto(login + salt, login + salt, login + salt));
-                userRepository.save(addedUser);
-            }
+        if (targetSession != null && addedUser != null) {
             users = targetSession.getParticipants();
             users.add(addedUser);
             targetSession.setParticipants(users);

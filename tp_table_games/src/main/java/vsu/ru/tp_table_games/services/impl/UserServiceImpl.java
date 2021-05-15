@@ -49,9 +49,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto updateUserPassword(LoginUserDto dto, String newPassword) {
-        User registeredUser = userRepository.findByLogin(dto.getLogin()).orElse(null);
-        String script = dto.getPassword();
-        if (registeredUser!=null && registeredUser.getPassword().equals(script)){
+        User registeredUser = userRepository.findByLogin(dto.getLogin()).orElse(null);;
+        if (registeredUser!=null && registeredUser.getPassword().equals(dto.getPassword())){
             registeredUser.setPassword(newPassword);
             userRepository.save(registeredUser);
             return UserMapper.INSTANCE.userToDto(registeredUser);

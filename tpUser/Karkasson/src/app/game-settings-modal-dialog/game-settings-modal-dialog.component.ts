@@ -10,6 +10,7 @@ export class GameSettingsModalDialogComponent implements OnInit {
 
   constructor() { }
 
+  @Input('visible')
   public visible = false;
   public visibleAnimate = false;
 
@@ -30,6 +31,9 @@ export class GameSettingsModalDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.visible){
+      this.show();
+    }
   }
 
 }

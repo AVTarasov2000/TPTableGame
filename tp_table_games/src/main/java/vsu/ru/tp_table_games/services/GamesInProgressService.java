@@ -8,4 +8,6 @@ import java.util.List;
 public interface GamesInProgressService {
     List<SessionDto> activeRooms();
     List<SessionDto> activeRoomsById(Long id);
+
+    List<SessionDto> getSessionHistoryByLogin(String login);
 }

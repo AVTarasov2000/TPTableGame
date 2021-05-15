@@ -24,9 +24,10 @@ public class UpdatePersonalDataController {
     @ResponseBody
     public UserDto UpdatePassword(@RequestBody JSONObject jsonObject) {
         LoginUserDto userDto = new LoginUserDto(
-        jsonObject.get("name").toString(),
         jsonObject.get("login").toString(),
-        jsonObject.get("password").toString());
+        jsonObject.get("password").toString(),
+        jsonObject.get("name").toString());
+
         return userService.updateUserPassword(userDto, jsonObject.get("newPassword").toString());
     }
 

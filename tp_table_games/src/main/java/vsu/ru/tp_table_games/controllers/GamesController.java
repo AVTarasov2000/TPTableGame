@@ -34,7 +34,7 @@ public class GamesController {
     @GetMapping("/sessions/{login}")
     @ResponseBody
     public List <SessionDto> sessionsByLogin(@PathVariable String login){
-        return gamesInProgressService.activeRooms();
+        return gamesInProgressService.getSessionHistoryByLogin(login);
     }
 
     @GetMapping("/games")

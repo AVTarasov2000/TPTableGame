@@ -13,4 +13,5 @@ public interface SessionRepository extends PagingAndSortingRepository<Session, L
     List<Session> findAllBySessionStatus(SessionStatus status);
     List<Session> findAllByGame(GameDto gameDto);
     List<Session> findAllByGameId(Long id);
+    List<Session> findAllByParticipants(Long id);
 }

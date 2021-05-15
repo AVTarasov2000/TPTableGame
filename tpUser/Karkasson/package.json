@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~11.2.5",
     "@angular/router": "~11.2.5",
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
+    "@stomp/ng2-stompjs": "^8.0.0",
     "@types/gapi": "^0.0.39",
     "@types/gapi.auth2": "^0.0.31",
     "angular-google-signin": "^0.1.5",
@@ -31,6 +32,7 @@
     "bootstrap": "^4.5.0",
     "ng-sidebar": "^9.4.2",
     "rxjs": "~6.6.0",
+    "simple-peer": "^9.11.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
@@ -40,6 +42,7 @@
     "@angular/compiler-cli": "~11.2.5",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
+    "@types/simple-peer": "^9.6.2",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",

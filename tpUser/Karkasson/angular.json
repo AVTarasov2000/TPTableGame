@@ -32,7 +32,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["./node_modules/simple-peer/simplepeer.min.js"]
           },
           "configurations": {
             "production": {

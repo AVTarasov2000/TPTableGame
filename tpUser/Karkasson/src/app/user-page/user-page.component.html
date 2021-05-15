@@ -46,12 +46,12 @@
 
       <div class="row">
         <div class="col-md-5 mb-3">
-          <input type="text" class="form-control" value="Мой логин" readonly>
+          <input type="text" class="form-control" [value]="crossPageInformation.currentUser.login" readonly>
         </div>
       </div>
       <div class="row">
         <div class="col-md-5 mb-3">
-          <input type="text" class="form-control" value="Мое имя в системе" readonly>
+          <input type="text" class="form-control" [value]="crossPageInformation.currentUser.name"  readonly>
         </div>
       </div>
       <hr class="my-4">

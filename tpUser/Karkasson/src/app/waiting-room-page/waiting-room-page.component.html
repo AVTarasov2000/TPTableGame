@@ -25,33 +25,41 @@
 </div>
 
 <div class="container themed-container">
+  <span>
   <table class="table table-striped table-sm">
-    <tbody>
-    <tr>
-      <th><strong class="d-block text-gray-dark">Nightmare</strong></th>
-      <th>not ready</th>
-    </tr>
-    <tr>
-      <th><strong class="d-block text-gray-dark">FireArrow</strong></th>
-      <th>not ready</th>
-    </tr>
-    <tr>
-      <th><strong class="d-block text-gray-dark">Reappzzter</strong></th>
-      <th>not ready</th>
-    </tr>
+    <tbody *ngFor="let user of rtcService.usersPeers">
+      <tr>
+        <th><strong class="d-block text-gray-dark">{{user.user}}</strong></th>
+        <th>not ready</th>
+      </tr>
+<!--    <tr>-->
+<!--      <th><strong class="d-block text-gray-dark">Nightmare</strong></th>-->
+<!--      <th>not ready</th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th><strong class="d-block text-gray-dark">FireArrow</strong></th>-->
+<!--      <th>not ready</th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th><strong class="d-block text-gray-dark">Reappzzter</strong></th>-->
+<!--      <th>not ready</th>-->
+<!--    </tr>-->
     </tbody>
   </table>
+  </span>
 </div>
 
 
 <div class="container">
   <div class="text-right">
-    <button type="button" class="btn btn-primary">Присоединиться к голосовому чату</button>
+    <button type="button" class="btn btn-primary" (click)="onVoiceChatStarted()">Присоединиться к голосовому чату</button>
     <button type="button" class="btn btn-primary">Готов</button>
   </div>
   <div class="text-center">
     <button type="button" class="btn btn-primary" [routerLink]="['/game']">Начать игру</button>
   </div>
 </div>
+<div #videoContainer id="videoContainer">
 
-
+</div>
+<video #videoPlayer id="videoPlayer" autoplay></video>

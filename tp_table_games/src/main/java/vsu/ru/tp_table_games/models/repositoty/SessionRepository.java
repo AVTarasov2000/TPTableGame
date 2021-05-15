@@ -3,6 +3,7 @@ package vsu.ru.tp_table_games.models.repositoty;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import vsu.ru.tp_table_games.models.dtos.GameDto;
 import vsu.ru.tp_table_games.models.entities.Session;
+import vsu.ru.tp_table_games.models.entities.User;
 import vsu.ru.tp_table_games.models.enums.SessionStatus;
 
 import java.util.List;

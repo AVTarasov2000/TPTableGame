@@ -6,6 +6,9 @@ import {PeerData, SignalInfo, UserInfo} from '../classes/peerData.interface';
 import {CrossPageInformation} from '../services/crossPageInformation';
 import {User} from '../classes/user';
 import {UserPeer} from '../classes/UserPeer';
+import {Game} from '../classes/game';
+import {HttpClient} from '@angular/common/http';
+import {GameSettingsModalDialogComponent} from '../game-settings-modal-dialog/game-settings-modal-dialog.component';
 
 @Component({
   selector: 'app-waiting-room-page',
@@ -17,12 +20,12 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
   constructor(public rtcService: WebRTCConnection,
               private signalR: SignalrService,
               private crossPageInformation: CrossPageInformation,
+              private http: HttpClient,
               private renderer: Renderer2) { }
   public subscriptions = new Subscription();
 
   @ViewChild('videoPlayer') videoPlayer: ElementRef;
   @ViewChild('videoContainer') videoContainer: ElementRef;
-
 
   // public users: UserPeer[] = [];
 
@@ -37,7 +40,21 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
 
   // @ts-ignore
   public userVideo: string;
+  login = '';
+  password = '';
+  doYouNeedToDeleteYourUserData = false;
 
+  onEasyStart(): void{
+    this.http.post<User>('http://localhost:8080/app/generate/user',
+      {login: this.login} ).subscribe(
+      (user) => {
+        this.crossPageInformation.currentUser = user;
+      },
+      err => {alert('соединение с сервером потеряно'); }
+    );
+    this.saveUsername();
+    this.doYouNeedToDeleteYourUserData = true;
+  }
 
   ngOnInit(): void {
     this.subscriptions.add(this.signalR.newPeer$.subscribe((user: string[]) => {
@@ -92,10 +109,22 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
       // this.videoPlayer.nativeElement.play();
     }));
 
-    this.saveUsername();
+    if (this.crossPageInformation.currentUser){
+      this.saveUsername();
+    }
+  }
+
+  public checkUser(): boolean{
+    if (this.crossPageInformation.currentUser){
+      return false;
+    }
+    return true;
   }
 
   public onVoiceChatStarted(): void {
+    if (this.crossPageInformation.currentUser){
+      this.onEasyStart();
+    }
     // todo roomId
     for (let i = 0; i < this.rtcService.usersPeers.length; i++) {
       // this.rtcService.currentPeer = this.rtcService.createPeer(this.stream, '0', true, this.users[i].user);
@@ -114,6 +143,31 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+    if (this.doYouNeedToDeleteYourUserData) {
+      const user = new User('', this.crossPageInformation.currentUser.login, '');
+      this.http.post<User>('http://localhost:8080/app/user/delete', user);
+      this.crossPageInformation.currentUser = null;
+    }
+  }
+
+  public trySignIn(userName: string, login: string, password: string): void{
+    const user = new User(userName, login, password);
+    this.http.post<User>('http://localhost:8080/app/login/authentication', user).subscribe(
+      (e) => {
+        if (e == null) {
+          alert('ошибка входа');
+        }
+        else {
+          this.crossPageInformation.currentUser = e;
+        }
+      },
+      err => {alert('соединение с сервером потеряно');
+      }
+    );
+  }
+
+  signIn(): void{
+    this.trySignIn('', this.login, this.password);
   }
 
 }

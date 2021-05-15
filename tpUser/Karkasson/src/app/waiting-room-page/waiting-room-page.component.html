@@ -1,3 +1,24 @@
+<app-game-settings-modal-dialog [visible]="checkUser()" #modal>
+  <div class="app-modal-header">
+    Вход в игру
+  </div>
+  <div class="app-modal-body">
+    <div class="form-label-group">
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" [(ngModel)]="login" name="username" required autofocus>
+      <label for="inputEmail">Логин</label>
+    </div>
+    <div class="form-label-group">
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" [(ngModel)]="password" name="password" required>
+      <label for="inputPassword">Пароль</label>
+    </div>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default" (click)="signIn(); modal.hide()" >Зарегистрироваться</button>
+    <button type="button" class="btn btn-primary" (click)="modal.hide(); onEasyStart()">Начать без регистрации</button>
+  </div>
+</app-game-settings-modal-dialog>
+
+<!-------------------------------------------------------------------------->
 <div class="container">
 
   <h1>Room title: Gamers</h1>
@@ -30,20 +51,8 @@
     <tbody *ngFor="let user of rtcService.usersPeers">
       <tr>
         <th><strong class="d-block text-gray-dark">{{user.user}}</strong></th>
-        <th>not ready</th>
+<!--        <th>not ready</th>-->
       </tr>
-<!--    <tr>-->
-<!--      <th><strong class="d-block text-gray-dark">Nightmare</strong></th>-->
-<!--      <th>not ready</th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <th><strong class="d-block text-gray-dark">FireArrow</strong></th>-->
-<!--      <th>not ready</th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <th><strong class="d-block text-gray-dark">Reappzzter</strong></th>-->
-<!--      <th>not ready</th>-->
-<!--    </tr>-->
     </tbody>
   </table>
   </span>
@@ -53,7 +62,7 @@
 <div class="container">
   <div class="text-right">
     <button type="button" class="btn btn-primary" (click)="onVoiceChatStarted()">Присоединиться к голосовому чату</button>
-    <button type="button" class="btn btn-primary">Готов</button>
+    <button type="button" class="btn btn-primary" (click)="modal.show()">Готов</button>
   </div>
   <div class="text-center">
     <button type="button" class="btn btn-primary" [routerLink]="['/game']">Начать игру</button>

@@ -19,10 +19,14 @@ export class GamesInProgressPageComponent implements OnInit {
   rooms: Room[] = [];
 
   ngOnInit(): void {
-    this.http.post<Room[]>('http://localhost:8080/app/activeGames', this.crossPageInformation.chosedGame).subscribe(
+    let id = '';
+    if (this.crossPageInformation.chosedGame.id) {
+      id = this.crossPageInformation.chosedGame.id.toString();
+    }
+    this.http.get<Room[]>('http://localhost:8080/app/activeSessions/' + id).subscribe(
       (rooms) => {
         if (rooms == null) {
-          alert('неверный пароль');
+          alert('неверный');
         }
         else {
           this.rooms = rooms;

@@ -20,10 +20,6 @@ public class RegisterController {
     @PostMapping("/register")
     @ResponseBody
     public UserDto Register(@RequestBody LoginUserDto userDto){
-        UserDto newUser = registerService.provide(userDto);
-        if(newUser == null) {
-            //TODO this login is already exist
-        }
-        return newUser;
+        return registerService.provide(userDto);
     }
 }

@@ -17,8 +17,7 @@ public class LoginController {
     @PostMapping("/login/check")
     @ResponseBody
     public UserDto checkLogin(@RequestBody LoginUserDto userDto){
-        UserDto resUser = loginService.provide(userDto);
-        return resUser;
+        return loginService.provide(userDto);
     }
 
 }

@@ -18,7 +18,7 @@ public class UpdatePersonalDataController {
 
     @PostMapping("/update_name")
     @ResponseBody
-    public UserDto Register(@RequestBody LoginUserDto userDto){
+    public UserDto UpdateName(@RequestBody LoginUserDto userDto){
 //        UserDto newUser = registerService.provide(userDto);
 //        if(newUser == null) {
 //            //TODO this login is already exist
@@ -26,4 +26,16 @@ public class UpdatePersonalDataController {
 //        return newUser;
         return null;
     }
+
+    @PostMapping("/update_password")
+    @ResponseBody
+    public UserDto UpdatePassword(@RequestBody LoginUserDto userDto){
+//        UserDto newUser = registerService.provide(userDto);
+//        if(newUser == null) {
+//            //TODO this login is already exist
+//        }
+//        return newUser;
+        return null;
+    }
+
 }

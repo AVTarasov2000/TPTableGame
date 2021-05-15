@@ -17,8 +17,8 @@ public class GeneratedUserServiceImpl implements GeneratedUserService {
     @Override
     public UserDto generateUnregisteredUser(String login){
         Date date = new Date();
-        String salt = date.toString();
-        LoginUserDto newUser = new LoginUserDto(login + salt, login + salt, login + salt);
+        String name = "User:" + login + String.valueOf(date.hashCode());
+        LoginUserDto newUser = new LoginUserDto( name, name, name);
         userRepository.save(LoginUserMapper.INSTANCE.dtoToUser(newUser));
         return  LoginUserMapper.INSTANCE.loginToDto(newUser);
     }

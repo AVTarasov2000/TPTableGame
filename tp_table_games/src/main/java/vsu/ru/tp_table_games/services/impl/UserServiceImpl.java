@@ -58,4 +58,13 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public void delete(LoginUserDto userDto) {
+        User target = userRepository.findByLogin(userDto.getLogin()).orElse(null);
+        if(target!=null && target.getPassword().equals(userDto.getPassword())) {
+            userRepository.delete(target);
+        }
+    }
+
+
 }

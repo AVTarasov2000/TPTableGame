@@ -9,4 +9,5 @@ public interface UserService {
     void saveUser(UserDto dto);
     UserDto updateUserName(LoginUserDto dto);
     UserDto updateUserPassword(LoginUserDto dto, String newPassword);
+    void delete(LoginUserDto userDto);
 }

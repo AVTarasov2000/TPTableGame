@@ -3,7 +3,6 @@ package vsu.ru.tp_table_games.models.mappers;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import vsu.ru.tp_table_games.models.dtos.LoginUserDto;
-import vsu.ru.tp_table_games.models.dtos.UserDto;
 import vsu.ru.tp_table_games.models.entities.User;
 
 import java.util.List;

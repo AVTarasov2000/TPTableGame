@@ -1,5 +1,6 @@
 package vsu.ru.tp_table_games.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,16 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import vsu.ru.tp_table_games.models.dtos.LoginUserDto;
 import vsu.ru.tp_table_games.models.dtos.UserDto;
+import vsu.ru.tp_table_games.services.GamesInProgressService;
+import vsu.ru.tp_table_games.services.UserService;
 
 @Controller
-@RequestMapping("/app")
-public class PersonalAccountController {
+@RequestMapping("/app/user")
+public class DeleteUserController {
+    @Autowired
+    private UserService userService;
 
-    @PostMapping("/personal_account")
+    @PostMapping("/delete")
     @ResponseBody
-    public UserDto checkLogin(@RequestBody UserDto userDto){
-        System.out.println("test is done");
-        System.out.println(userDto);
-        return userDto;
+    public void userDelete(@RequestBody LoginUserDto userDto){
+        userService.delete(userDto);
     }
+
 }

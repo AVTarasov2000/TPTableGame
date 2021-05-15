@@ -7,5 +7,6 @@ public interface UserService {
     UserDto getUser(String login);
     UserDto getUser(Long id);
     void saveUser(UserDto dto);
-    void updateUser(LoginUserDto dto);
+    UserDto updateUserName(LoginUserDto dto);
+    UserDto updateUserPassword(LoginUserDto dto, String newPassword);
 }

@@ -6,5 +6,6 @@ import vsu.ru.tp_table_games.models.dtos.SessionDto;
 import java.util.List;
 
 public interface GamesInProgressService {
-    List<SessionDto> activeRooms(GameDto gameDto);
+    List<SessionDto> activeRooms();
+    List<SessionDto> activeRoomsById(Long id);
 }

@@ -9,7 +9,7 @@ import vsu.ru.tp_table_games.models.entities.User;
 import vsu.ru.tp_table_games.models.mappers.UserMapper;
 import vsu.ru.tp_table_games.models.repositoty.UserRepository;
 import vsu.ru.tp_table_games.services.UserService;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 import java.util.Optional;
 
@@ -19,7 +19,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDto getUser(String login) {
@@ -39,7 +38,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(LoginUserDto dto) {
         User registeredUser = userRepository.findByLogin(dto.getLogin()).orElse(null);
-        String script = passwordEncoder.encode(dto.getPassword());
+        String script = dto.getPassword();
         if (registeredUser!=null && registeredUser.getPassword().equals(script)){
             registeredUser.setName(dto.getName());
         }

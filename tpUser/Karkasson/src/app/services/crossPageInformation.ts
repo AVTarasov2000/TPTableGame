@@ -8,16 +8,16 @@ export class CrossPageInformation {
   constructor() { }
 
   // tslint:disable-next-line:variable-name
-  private _currentUser: User;
+  private _currentUser: any;
   // tslint:disable-next-line:variable-name
   private _chosedGame: Game;
 
 
-  get currentUser(): User {
+  get currentUser(): any {
     return this._currentUser;
   }
 
-  set currentUser(value: User) {
+  set currentUser(value: any) {
     this._currentUser = value;
   }
 

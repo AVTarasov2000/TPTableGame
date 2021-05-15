@@ -4,6 +4,7 @@ import {LoginService} from '../services/login.service';
 import {User} from '../classes/user';
 import { HttpClient} from '@angular/common/http';
 import {CrossPageInformation} from '../services/crossPageInformation';
+import {LoginUserDto} from '../classes/LoginUserDTO';
 
 @Component({
   selector: 'app-login-page',
@@ -19,13 +20,9 @@ export class LoginPageComponent implements OnInit {
   login = '';
   password = '';
   userName = '';
+  repeatePassword = '';
 
   ngOnInit(): void {
-  }
-
-  onLogInButton(): void{
-    console.log(this.login);
-    console.log(this.password);
   }
 
   onSignInButton(): void{
@@ -34,23 +31,28 @@ export class LoginPageComponent implements OnInit {
     console.log(this.password);
   }
 
-  public trySignIn(userName: string, login: string, password: string): boolean{
-    const user = new User(userName, login, password);
-    let result = false;
-    this.http.post<User>('http://localhost:8080/app/login/check', user).subscribe(
-      (e) => {
-        if (e == null) {
-          alert('ошибка регистрации');
+  public trySignIn(userName: string, login: string, password: string){
+    if (this.password != this.repeatePassword){
+      alert('неправильно повторен пароль');
+    }
+    else {
+      const user = {name: userName, login: login, password: password};
+      let result = false;
+      this.http.post<LoginUserDto>('http://localhost:8080/app/register', user).subscribe(
+        (e) => {
+          if (e == null) {
+            alert('ошибка регистрации');
+          } else {
+            this.crossPageInformation.currentUser = e;
+            this.router.navigate(['/main']);
+          }
+        },
+        err => {
+          alert('соединение с сервером потеряно');
+          result = false;
         }
-        else {
-          this.crossPageInformation.currentUser = e;
-          this.router.navigate(['/main']);
-        }
-      },
-      err => {alert('соединение с сервером потеряно');
-              result =  false; }
-    );
-    return result;
+      );
+    }
   }
 
 }

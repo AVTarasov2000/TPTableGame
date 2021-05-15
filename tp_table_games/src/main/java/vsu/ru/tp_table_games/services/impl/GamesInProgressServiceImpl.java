@@ -4,11 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vsu.ru.tp_table_games.models.dtos.GameDto;
 import vsu.ru.tp_table_games.models.dtos.SessionDto;
+import vsu.ru.tp_table_games.models.entities.User;
 import vsu.ru.tp_table_games.models.enums.PrivacyStatus;
 import vsu.ru.tp_table_games.models.enums.SessionStatus;
 import vsu.ru.tp_table_games.models.mappers.SessionsMapper;
 import vsu.ru.tp_table_games.models.repositoty.SessionRepository;
+import vsu.ru.tp_table_games.models.repositoty.UserRepository;
 import vsu.ru.tp_table_games.services.GamesInProgressService;
+import vsu.ru.tp_table_games.services.UserService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +21,8 @@ import java.util.List;
 public class GamesInProgressServiceImpl implements GamesInProgressService {
     @Autowired
     private SessionRepository sessionRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List<SessionDto> activeRooms() {
@@ -34,5 +39,14 @@ public class GamesInProgressServiceImpl implements GamesInProgressService {
             }
         });
         return result;
+    }
+
+    @Override
+    public List<SessionDto> getSessionHistoryByLogin(String login) {
+        User user = userRepository.findByLogin(login).orElse(null);
+        if(user!=null){
+            return SessionsMapper.INSTANCE.sessionToDto(sessionRepository.findAllByParticipants(user.getId()));
+        }
+        return new ArrayList<>();
     }
 }

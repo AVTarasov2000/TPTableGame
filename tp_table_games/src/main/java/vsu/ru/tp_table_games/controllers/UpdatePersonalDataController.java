@@ -1,5 +1,6 @@
 package vsu.ru.tp_table_games.controllers;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +22,12 @@ public class UpdatePersonalDataController {
 
     @PostMapping("/password")
     @ResponseBody
-    public UserDto UpdatePassword(@RequestBody LoginUserDto userDto, @RequestParam String newPassword) {
-        return userService.updateUserPassword(userDto, newPassword);
+    public UserDto UpdatePassword(@RequestBody JSONObject jsonObject) {
+        LoginUserDto userDto = new LoginUserDto(
+        jsonObject.get("name").toString(),
+        jsonObject.get("login").toString(),
+        jsonObject.get("password").toString());
+        return userService.updateUserPassword(userDto, jsonObject.get("newPassword").toString());
     }
 
 }

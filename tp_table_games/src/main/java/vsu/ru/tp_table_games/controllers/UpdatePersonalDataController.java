@@ -2,40 +2,27 @@ package vsu.ru.tp_table_games.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import vsu.ru.tp_table_games.models.dtos.LoginUserDto;
 import vsu.ru.tp_table_games.models.dtos.UserDto;
 import vsu.ru.tp_table_games.services.UserService;
 
 @Controller
-@RequestMapping("/app")
+@RequestMapping("/app/update")
 public class UpdatePersonalDataController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/update_name")
+    @PostMapping("/name")
     @ResponseBody
-    public UserDto UpdateName(@RequestBody LoginUserDto userDto){
-//        UserDto newUser = registerService.provide(userDto);
-//        if(newUser == null) {
-//            //TODO this login is already exist
-//        }
-//        return newUser;
-        return null;
+    public UserDto UpdateName(@RequestBody LoginUserDto userDto) {
+        return userService.updateUserName(userDto);
     }
 
-    @PostMapping("/update_password")
+    @PostMapping("/password")
     @ResponseBody
-    public UserDto UpdatePassword(@RequestBody LoginUserDto userDto){
-//        UserDto newUser = registerService.provide(userDto);
-//        if(newUser == null) {
-//            //TODO this login is already exist
-//        }
-//        return newUser;
-        return null;
+    public UserDto UpdatePassword(@RequestBody LoginUserDto userDto, @RequestParam String newPassword) {
+        return userService.updateUserPassword(userDto, newPassword);
     }
 
 }

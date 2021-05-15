@@ -4,6 +4,7 @@ import {User} from '../classes/user';
 import { HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {CrossPageInformation} from '../services/crossPageInformation';
+import {LoginUserDto} from '../classes/LoginUserDTO';
 
 @Component({
   selector: 'app-user-page',
@@ -24,9 +25,9 @@ export class UserPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changePass(): void {
-    const user = new User(this.newName, this.crossPageInformation.currentUser.login, this.password);
-    this.http.post<User>('http://localhost:8080/app/personal/change/name', user).subscribe(
+  changeName(): void {
+    const user = {name: this.newName, login: this.crossPageInformation.currentUser.login, password: this.password};
+    this.http.post<User>('http://localhost:8080/app/update/name', user).subscribe(
       (e) => {
         if (e == null) {
           alert('неверный пароль');
@@ -39,10 +40,10 @@ export class UserPageComponent implements OnInit {
     );
   }
 
-  changeName(): void {
+  changePass(): void {
     // todo
-    const user = new User(this.newName, this.crossPageInformation.currentUser.login, this.password);
-    this.http.post<User>('http://localhost:8080/app/personal/change/password', user).subscribe(
+    const user = {name: this.newName, login: this.crossPageInformation.currentUser.login, password: this.password, newPassword: this.newPassword};
+    this.http.post<User>('http://localhost:8080/app/update/password', user).subscribe(
       (e) => {
         if (e == null) {
           alert('ошибка пароль');

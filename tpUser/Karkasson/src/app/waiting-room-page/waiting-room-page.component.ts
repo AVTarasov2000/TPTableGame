@@ -61,7 +61,8 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
       console.log(user);
       this.rtcService.usersPeers = [];
       // tslint:disable-next-line:forin
-      for (const userKey in user) {
+      for (const userKey of user) {
+        console.log(userKey);
         this.rtcService.usersPeers.push({user: userKey, peer: null});
       }
       // this.rtcService.newUser(user);

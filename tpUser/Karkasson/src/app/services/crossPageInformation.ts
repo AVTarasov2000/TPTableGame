@@ -5,12 +5,21 @@ import {Game} from '../classes/game';
 
 @Injectable()
 export class CrossPageInformation {
+  get room(): string {
+    return this._room;
+  }
+
+  set room(value: string) {
+    this._room = value;
+  }
   constructor() { }
 
   // tslint:disable-next-line:variable-name
   private _currentUser: any;
   // tslint:disable-next-line:variable-name
   private _chosedGame: Game;
+
+  private _room: string;
 
 
   get currentUser(): any {

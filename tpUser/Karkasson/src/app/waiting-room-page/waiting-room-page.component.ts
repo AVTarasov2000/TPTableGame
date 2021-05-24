@@ -9,6 +9,8 @@ import {UserPeer} from '../classes/UserPeer';
 import {Game} from '../classes/game';
 import {HttpClient} from '@angular/common/http';
 import {GameSettingsModalDialogComponent} from '../game-settings-modal-dialog/game-settings-modal-dialog.component';
+import {ClipboardService} from 'ngx-clipboard';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-waiting-room-page',
@@ -21,7 +23,9 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
               private signalR: SignalrService,
               private crossPageInformation: CrossPageInformation,
               private http: HttpClient,
-              private renderer: Renderer2) { }
+              private renderer: Renderer2,
+              private clipboardService: ClipboardService,
+              private route: ActivatedRoute) { }
   public subscriptions = new Subscription();
 
   @ViewChild('videoPlayer') videoPlayer: ElementRef;
@@ -57,6 +61,12 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if (this.crossPageInformation.room) {
+      this.route.params
+        .subscribe((params: any) => {
+          this.crossPageInformation.room = params.roomId;
+        });
+    }
     this.subscriptions.add(this.signalR.newPeer$.subscribe((user: string[]) => {
       console.log(user);
       this.rtcService.usersPeers = [];
@@ -166,6 +176,11 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
       }
     );
   }
+
+  public copyLink(): void {
+    this.clipboardService.copy('http://localhost:4200/waitingRoom/' + this.crossPageInformation.room);
+  }
+
 
   signIn(): void{
     this.trySignIn('', this.login, this.password);

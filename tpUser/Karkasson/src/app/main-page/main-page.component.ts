@@ -46,6 +46,7 @@ export class MainPageComponent implements OnInit {
 
   playButtonFunc(game: Game): void{
     this.crossPageInformation.chosedGame = game;
+    this.crossPageInformation.room = '0';
     this.router.navigate(['/gamePage']);
   }
 

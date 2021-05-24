@@ -20,7 +20,7 @@ export class GamePageComponent implements OnInit {
 
   constructor(private router: Router,
               private http: HttpClient,
-              private crossPageInformation: CrossPageInformation
+              public crossPageInformation: CrossPageInformation
   ) { }
 
   public game: Game;

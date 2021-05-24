@@ -26,7 +26,7 @@ import {LoginService} from './services/login.service';
 import {CrossPageInformation} from './services/crossPageInformation';
 import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
 import {myRxStompConfig} from './services/config/myRxStompConfig';
-
+import { ClipboardModule } from 'ngx-clipboard';
 
 
 @NgModule({
@@ -56,6 +56,7 @@ import {myRxStompConfig} from './services/config/myRxStompConfig';
     MatSidenavModule,
     MatButtonModule,
     HttpClientModule,
+    ClipboardModule,
   ],
   providers: [LoginService,
     CrossPageInformation,

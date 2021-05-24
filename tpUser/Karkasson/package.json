@@ -31,6 +31,7 @@
     "angular-material-sidemenu": "^1.0.2",
     "bootstrap": "^4.5.0",
     "ng-sidebar": "^9.4.2",
+    "ngx-clipboard": "^14.0.1",
     "rxjs": "~6.6.0",
     "simple-peer": "^9.11.0",
     "tslib": "^2.0.0",

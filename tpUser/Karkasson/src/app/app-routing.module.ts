@@ -18,6 +18,7 @@ const routes: Routes = [
   {path: 'history', component: HistoryPageComponent},
   {path: 'game', component: GameFieldComponent},
   {path: 'waitingRoom', component: WaitingRoomPageComponent},
+  {path: 'waitingRoom/:roomId', component: WaitingRoomPageComponent},
   {path: 'signin', component: SignInPageComponent},
   {path: 'myPage', component: UserPageComponent},
   {path: '**', redirectTo: '/login', pathMatch: 'full'}

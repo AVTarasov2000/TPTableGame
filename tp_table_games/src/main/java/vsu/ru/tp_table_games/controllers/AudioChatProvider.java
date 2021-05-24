@@ -13,9 +13,11 @@ import vsu.ru.tp_table_games.models.dtos.LoginUserDto;
 import vsu.ru.tp_table_games.models.dtos.UserDto;
 import vsu.ru.tp_table_games.services.GamesInProgressService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 @Controller
 public class AudioChatProvider {
@@ -30,10 +32,15 @@ public class AudioChatProvider {
 
     @MessageMapping("/videoChat/{id}/newUser")
     public void newUser(@Payload JSONObject chatMessage, @DestinationVariable Long id) {
-        List<UserDto> usersInRoom = gamesInProgressService.addUserById(chatMessage.get("user").toString(), id);
-        for (UserDto userDto:
-                usersInRoom) {
-                messagingTemplate.convertAndSend("/user/" + userDto.getLogin() + "/socket/userArrived", usersInRoom);
+//        List<UserDto> usersInRoom = gamesInProgressService.addUserById(chatMessage.get("user").toString(), id);
+//        for (UserDto userDto:
+//                usersInRoom) {
+//                messagingTemplate.convertAndSend("/user/" + userDto.getLogin() + "/socket/userArrived", usersInRoom);
+//        }
+        users.add((String) chatMessage.get("user"));
+        for (String i:
+                users) {
+            messagingTemplate.convertAndSend("/user/" + i + "/socket/userArrived", users);
         }
         //TODO update waitingRoom.html
     }

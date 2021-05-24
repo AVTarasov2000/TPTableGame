@@ -61,7 +61,7 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if (this.crossPageInformation.room) {
+    if (!this.crossPageInformation.room) {
       this.route.params
         .subscribe((params: any) => {
           this.crossPageInformation.room = params.roomId;

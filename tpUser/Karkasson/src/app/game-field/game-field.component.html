@@ -2,7 +2,7 @@
   <div style = "position: static" >
     <canvas #fieldCanvas [id]="fieldCanvas"
             style="width: 100%;"
-            id="fieldCanvas" (scroll)="setupField()" (click)="setupField()">
+            id="fieldCanvas" (click)="setupField($event)">
     </canvas>
   </div>
 </main>

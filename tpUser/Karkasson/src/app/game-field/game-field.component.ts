@@ -16,8 +16,7 @@ export class GameFieldComponent implements OnInit {
   private fieldCanvasContext: CanvasRenderingContext2D| ImageBitmapRenderingContext| null;
 
 
-  // private cardWidth = 300 / 4;
-  // private cardHeight = 300 / 4;
+
   private cardWidth = 60;
   private cardHeight = 60;
   private borderAlignW = this.cardWidth / 2;
@@ -25,44 +24,157 @@ export class GameFieldComponent implements OnInit {
   public screenWidth = window.screen.width;
   public screenHeight = window.screen.height;
   field: Field = new Field();
+  tmpCard: any = {svg: '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">\n' +
+      '\n' +
+      '  <style type="text/css">\n' +
+      '    .base { stroke-width:2;  stroke:#000000; fill:#66cc00; }\n' +
+      '  </style>\n' +
+      '\n' +
+      '  <defs>\n' +
+      '    <rect   id="square"  x="-30" y="-30" width="60" height="60"/>\n' +
+      '    <use    id="base"    xlink:href="#square" class="base"/>\n' +
+      '  </defs>\n' +
+      '\n' +
+      '  <g transform="translate(30,30)">\n' +
+      '    <use xlink:href="#base"/>\n' +
+      '  </g>\n' +
+      '</svg>'};
+
+
+  cards = [
+    {svg: '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">\n' +
+        '\n' +
+        '  <style type="text/css">\n' +
+        '    .base { stroke-width:2;  stroke:#000000; fill:#66cc00; }\n' +
+        '    .rive { stroke-width:10; stroke:#0000ff;               }\n' +
+        '  </style>\n' +
+        '\n' +
+        '  <defs>\n' +
+        '    <rect   id="square"  x="-30" y="-30" width="60" height="60"/>\n' +
+        '    <use    id="base"    xlink:href="#square" class="base"/>\n' +
+        '    <path id="rive_1"  d="M 1,5 A 5,5 0 1 0 0,5 V 30" class="rive"/>\n' +
+        '    <g id="tile_a">\n' +
+        '      <use xlink:href="#base"/>\n' +
+        '      <use xlink:href="#rive_1"/>\n' +
+        '    </g>\n' +
+        '  </defs>\n' +
+        '\n' +
+        '  <g transform="translate(30,30)">\n' +
+        '    <use xlink:href="#tile_a"/>\n' +
+        '  </g>\n' +
+        '</svg>\n'},
+    {svg: '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">\n' +
+        '\n' +
+        '  <style type="text/css">\n' +
+        '    .base { stroke-width:2;  stroke:#000000; fill:#66cc00; }\n' +
+        '  </style>\n' +
+        '\n' +
+        '  <defs>\n' +
+        '    <rect   id="square"  x="-30" y="-30" width="60" height="60"/>\n' +
+        '    <use    id="base"    xlink:href="#square" class="base"/>\n' +
+        '  </defs>\n' +
+        '\n' +
+        '  <g transform="translate(30,30)">\n' +
+        '    <use xlink:href="#base"/>\n' +
+        '  </g>\n' +
+        '</svg>'},
+    {svg: '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">\n' +
+        '\n' +
+        '  <style type="text/css">\n' +
+        '    .base { stroke-width:2;  stroke:#000000; fill:#66cc00; }\n' +
+        '    .rive { stroke-width:10; stroke:#0000ff;               }\n' +
+        '  </style>\n' +
+        '\n' +
+        '  <defs>\n' +
+        '    <rect   id="square"  x="-30" y="-30" width="60" height="60"/>\n' +
+        '    <use    id="base"    xlink:href="#square" class="base"/>\n' +
+        '    <path id="rive_1"  d="M 1,5 A 5,5 0 1 0 0,5 V 30" class="rive"/>\n' +
+        '    <g id="tile_a">\n' +
+        '      <use xlink:href="#base"/>\n' +
+        '      <use xlink:href="#rive_1"/>\n' +
+        '    </g>\n' +
+        '  </defs>\n' +
+        '\n' +
+        '  <g transform="translate(30,30)">\n' +
+        '    <use xlink:href="#tile_a"/>\n' +
+        '  </g>\n' +
+        '</svg>\n'},
+    {svg: '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">\n' +
+        '\n' +
+        '  <style type="text/css">\n' +
+        '    .base { stroke-width:2;  stroke:#000000; fill:#66cc00; }\n' +
+        '  </style>\n' +
+        '\n' +
+        '  <defs>\n' +
+        '    <rect   id="square"  x="-30" y="-30" width="60" height="60"/>\n' +
+        '    <use    id="base"    xlink:href="#square" class="base"/>\n' +
+        '  </defs>\n' +
+        '\n' +
+        '  <g transform="translate(30,30)">\n' +
+        '    <use xlink:href="#base"/>\n' +
+        '  </g>\n' +
+        '</svg>'},
+    {svg: '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">\n' +
+      '\n' +
+      '  <style type="text/css">\n' +
+      '    .base { stroke-width:2;  stroke:#000000; fill:#66cc00; }\n' +
+      '    .rive { stroke-width:10; stroke:#0000ff;               }\n' +
+      '  </style>\n' +
+      '\n' +
+      '  <defs>\n' +
+      '    <rect   id="square"  x="-30" y="-30" width="60" height="60"/>\n' +
+      '    <use    id="base"    xlink:href="#square" class="base"/>\n' +
+      '    <path id="rive_1"  d="M 1,5 A 5,5 0 1 0 0,5 V 30" class="rive"/>\n' +
+      '    <g id="tile_a">\n' +
+      '      <use xlink:href="#base"/>\n' +
+      '      <use xlink:href="#rive_1"/>\n' +
+      '    </g>\n' +
+      '  </defs>\n' +
+      '\n' +
+      '  <g transform="translate(30,30)">\n' +
+      '    <use xlink:href="#tile_a"/>\n' +
+      '  </g>\n' +
+      '</svg>\n'},
+    {svg: '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">\n' +
+      '\n' +
+      '  <style type="text/css">\n' +
+      '    .base { stroke-width:2;  stroke:#000000; fill:#66cc00; }\n' +
+      '  </style>\n' +
+      '\n' +
+      '  <defs>\n' +
+      '    <rect   id="square"  x="-30" y="-30" width="60" height="60"/>\n' +
+      '    <use    id="base"    xlink:href="#square" class="base"/>\n' +
+      '  </defs>\n' +
+      '\n' +
+      '  <g transform="translate(30,30)">\n' +
+      '    <use xlink:href="#base"/>\n' +
+      '  </g>\n' +
+      '</svg>'},
+  ];
 
   ngOnInit(): void {
-
+    this.setupField(null);
   }
 
+
   onClick(event): void{
-    let x = Math.floor(event.clientX / this.cardWidth);
-    let y = Math.floor(event.clientY / this.cardHeight)-1;
-    // let x = event.clientX / this.cardWidth;
-    // let y = event.clientY / this.cardHeight;
-
-
-    let card = new Card("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 60 60\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n" +
-      "\n" +
-      "  <style type=\"text/css\">\n" +
-      "    .base { stroke-width:2;  stroke:#000000; fill:#66cc00; }\n" +
-      "    .rive { stroke-width:10; stroke:#0000ff;               }\n" +
-      "  </style>\n" +
-      "\n" +
-      "  <defs>\n" +
-      "    <rect   id=\"square\"  x=\"-30\" y=\"-30\" width=\"60\" height=\"60\"/>\n" +
-      "    <use    id=\"base\"    xlink:href=\"#square\" class=\"base\"/>\n" +
-      "    <path id=\"rive_1\"  d=\"M 1,5 A 5,5 0 1 0 0,5 V 30\" class=\"rive\"/>\n" +
-      "    <g id=\"tile_a\">\n" +
-      "      <use xlink:href=\"#base\"/>\n" +
-      "      <use xlink:href=\"#rive_1\"/>\n" +
-      "    </g>\n" +
-      "  </defs>\n" +
-      "\n" +
-      "  <g transform=\"translate(30,30)\">\n" +
-      "    <use xlink:href=\"#tile_a\"/>\n" +
-      "  </g>\n" +
-      "</svg>\n");
-    this.field.put_card(card, x, y);
+    const x = Math.floor(event.clientX / this.cardWidth);
+    const y = Math.floor(event.clientY / this.cardHeight) - 1;
+    if (this.tmpCard) {
+      if (this.field.put_card(this.tmpCard, x, y)) {
+        if (this.cards.length > 0) {
+          this.tmpCard = this.cards.pop();
+        } else {
+          this.tmpCard = null;
+        }
+      }
+    }
   }
 
   setupField(event: any): void{
-    this.onClick(event);
+    if (event){
+      this.onClick(event);
+    }
     this.canvas.nativeElement.width = this.screenWidth;
     this.canvas.nativeElement.height = this.screenHeight;
     this.fieldCanvasContext = this.canvas.nativeElement.getContext('2d');
@@ -106,17 +218,17 @@ export class GameFieldComponent implements OnInit {
     // // @ts-ignore
     // this.fieldCanvasContext.strokeRect(x, y - this.cardHeight, this.cardWidth, this.cardHeight);
 
-    // const currentField = new Image();
-    // currentField.src = 'assets/cards/riverStart.svg';
-    // // @ts-ignore
-    // this.fieldCanvasContext.drawImage(currentField,
-    //   this.canvas.nativeElement.width - this.cardWidth - this.borderAlignW, 10 + this.borderAlignH,
-    //   this.cardWidth, this.cardHeight);
-
+    if (this.tmpCard) {
+      const currentField = new Image();
+      currentField.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(this.tmpCard.svg);
+      // @ts-ignore
+      this.fieldCanvasContext.drawImage(currentField,
+        this.canvas.nativeElement.width - this.cardWidth - this.borderAlignW, 10 + this.borderAlignH,
+        this.cardWidth, this.cardHeight);
+    }
     for (let i = 0; i < this.field.cards.length; i++) {
       const currentField = new Image();
-      currentField.src = 'assets/cards/riverStart.svg';
-      // currentField.src = this.field.cards[i].svg;
+      currentField.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(this.field.cards[i].svg);
       // @ts-ignore
       this.fieldCanvasContext.drawImage(currentField,
         this.field.cards[i].x * this.cardWidth,

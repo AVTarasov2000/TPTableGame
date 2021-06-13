@@ -1,17 +1,12 @@
 import {Object} from './object';
 
-export class Card {
-  public up: Object;
-  public down: Object;
-  public left: Object;
-  public right: Object;
-  public center: Object;
-  public svg: string;
+export interface Card {
+  up: Object;
+  down: Object;
+  left: Object;
+  right: Object;
+  center: Object;
+  svg: string;
   x: number;
   y: number;
-
-
-  constructor(svg: string) {
-    this.svg = svg;
-  }
 }

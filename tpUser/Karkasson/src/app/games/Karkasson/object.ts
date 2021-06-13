@@ -1,3 +1,4 @@
-export enum Object{
-
+export interface Object{
+  man: boolean;
+  type: number
 }

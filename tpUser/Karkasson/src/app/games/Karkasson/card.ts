@@ -9,4 +9,5 @@ export interface Card {
   svg: string;
   x: number;
   y: number;
+  rotation: number;
 }

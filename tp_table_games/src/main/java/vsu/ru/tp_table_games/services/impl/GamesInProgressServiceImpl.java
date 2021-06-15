@@ -48,7 +48,10 @@ public class GamesInProgressServiceImpl implements GamesInProgressService {
         User user = userRepository.findByLogin(login).orElse(null);
 
         if (user != null) {
-            return SessionsMapper.INSTANCE.sessionToDto(user.getAttendedSessions());
+            List<SessionDto> tmp = new ArrayList <>();
+            tmp.addAll(SessionsMapper.INSTANCE.sessionToDto(user.getAttendedSessions()));
+            tmp.addAll(SessionsMapper.INSTANCE.sessionToDto(user.getCreatedSessions()));
+            return tmp;
         }
         return new ArrayList<>();
     }

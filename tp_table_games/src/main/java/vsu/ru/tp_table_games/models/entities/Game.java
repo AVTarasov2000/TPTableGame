@@ -29,7 +29,7 @@ public class Game {
     @Column(name = "images")
     private String images;
 
-    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
-    private List<Session> sessions;
+//    @OneToMany(mappedBy = "game", fetch = FetchType.LAZY)
+//    private List<Session> sessions;
 
 }

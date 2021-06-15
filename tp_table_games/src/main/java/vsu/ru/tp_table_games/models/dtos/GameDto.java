@@ -17,5 +17,5 @@ public class GameDto {
     private String information;
     private String images;
 
-    private List<SessionDto> sessions;
+//    private List<SessionDto> sessions;
 }

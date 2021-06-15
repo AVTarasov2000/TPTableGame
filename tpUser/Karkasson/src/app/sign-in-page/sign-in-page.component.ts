@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { HttpClient} from '@angular/common/http';
 import {LoginService} from '../services/login.service';
 import {CrossPageInformation} from '../services/crossPageInformation';
+import {Game} from '../classes/game';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -30,6 +31,17 @@ export class SignInPageComponent implements OnInit {
         }
         else {
           this.crossPageInformation.currentUser = e;
+          this.http.get<Game[]>('http://localhost:8080/app/games').subscribe(
+            (games) => {
+              if (games == null) {
+                alert('неверный пароль');
+              }
+              else {
+                this.crossPageInformation.games = games;
+              }
+            },
+            err => {alert('соединение с сервером потеряно'); }
+          );
           this.router.navigate(['/main']);
         }
       },

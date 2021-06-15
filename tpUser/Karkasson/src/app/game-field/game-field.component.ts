@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Field} from '../games/Karkasson/field';
 import {Card} from '../games/Karkasson/card';
-import {log} from 'util';
 
 @Component({
   selector: 'app-game-field',
@@ -170,7 +169,6 @@ export class GameFieldComponent implements OnInit {
   }
 
   setupField(): void{
-    console.log(this.tmpCard.svg);
     this.canvas.nativeElement.width = this.screenWidth;
     this.canvas.nativeElement.height = this.screenHeight;
     this.fieldCanvasContext = this.canvas.nativeElement.getContext('2d');

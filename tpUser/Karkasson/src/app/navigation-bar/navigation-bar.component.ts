@@ -1,4 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {CrossPageInformation} from '../services/crossPageInformation';
+import {Game} from '../classes/game';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -8,7 +11,16 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
+
+  constructor(public data: CrossPageInformation, private router: Router) {
+  }
+
   ngOnInit(): void {
   }
 
+  playButtonFunc(game: Game): void {
+    this.data.chosedGame = game;
+    this.data.room = '0';
+    this.router.navigate(['/gamePage']);
+  }
 }

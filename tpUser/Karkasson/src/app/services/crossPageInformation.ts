@@ -21,6 +21,7 @@ export class CrossPageInformation {
 
   private _room: string;
 
+  public games: Game[];
 
   get currentUser(): any {
     return this._currentUser;

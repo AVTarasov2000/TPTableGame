@@ -5,6 +5,7 @@ import {User} from '../classes/user';
 import { HttpClient} from '@angular/common/http';
 import {CrossPageInformation} from '../services/crossPageInformation';
 import {LoginUserDto} from '../classes/LoginUserDTO';
+import {Game} from '../classes/game';
 
 @Component({
   selector: 'app-login-page',
@@ -44,6 +45,17 @@ export class LoginPageComponent implements OnInit {
             alert('ошибка регистрации');
           } else {
             this.crossPageInformation.currentUser = e;
+            this.http.get<Game[]>('http://localhost:8080/app/games').subscribe(
+              (games) => {
+                if (games == null) {
+                  alert('неверный пароль');
+                }
+                else {
+                  this.crossPageInformation.games = games;
+                }
+              },
+              err => {alert('соединение с сервером потеряно'); }
+            );
             this.router.navigate(['/main']);
           }
         },

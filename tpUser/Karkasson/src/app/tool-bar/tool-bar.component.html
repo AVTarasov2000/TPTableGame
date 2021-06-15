@@ -2,13 +2,16 @@
   <li class="nav-item ">
     <a [routerLink]="['/main']"><span>Библиотека</span></a>
   </li>
-  <li class="nav-item ">
+  <li class="nav-item " *ngIf="data.currentUser">
     <a [routerLink]="['/history']"><span>История</span></a>
   </li>
   <li class="nav-item ">
     <a [routerLink]="['/gamesInProgress']"><span>Идущие игры</span></a>
   </li>
-  <li class="nav-item ">
-    <a [routerLink]="['/signin']"><span>Выход</span></a>
+  <li class="nav-item " *ngIf="data.currentUser">
+    <a [routerLink]="['/signin']" (click)="data.currentUser = null"><span>Выход</span></a>
+  </li>
+  <li class="nav-item " *ngIf="!data.currentUser">
+    <a [routerLink]="['/signin']"><span>Вход</span></a>
   </li>
 </mat-toolbar>

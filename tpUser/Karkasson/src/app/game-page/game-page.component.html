@@ -58,10 +58,10 @@
         <li class="list-group-item d-flex justify-content-between lh-condensed"
             *ngFor="let game of playedGames">
           <div>
-            <h6 class="my-0">{{game.name}}</h6>
+            <h6 class="my-0">{{game.title}}</h6>
             <small class="text-muted">
-              <span *ngIf="game.isVin">выиграна</span>
-              <span *ngIf="!game.isVin">проиграна</span>
+              <span *ngIf="game.sessionStatus">выиграна</span>
+              <span *ngIf="!game.sessionStatus">проиграна</span>
             </small>
           </div>
 <!--          <span class="text-muted">счет: {{game.score}}</span>-->

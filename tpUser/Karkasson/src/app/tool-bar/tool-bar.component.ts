@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CrossPageInformation} from '../services/crossPageInformation';
 
 @Component({
   selector: 'app-tool-bar',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public data: CrossPageInformation) { }
 
   ngOnInit(): void {
   }

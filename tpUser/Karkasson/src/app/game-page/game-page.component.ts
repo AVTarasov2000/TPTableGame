@@ -25,7 +25,7 @@ export class GamePageComponent implements OnInit {
   ) { }
 
   public game: Game;
-  public playedGames: PlayedGame[] = [];
+  public playedGames: Session[] = [];
 
   log(str: string): void{
     console.log(str);
@@ -48,14 +48,14 @@ export class GamePageComponent implements OnInit {
         }
       );
     }
-    this.playedGames.push(new PlayedGame('Gamers', 420, true),
-      new PlayedGame('Gamers', 69, false));
+    // this.playedGames.push(new PlayedGame('Gamers', 420, true),
+    //   new PlayedGame('Gamers', 69, false));
     this.http.get<Session[]>('http://localhost:8080/app/sessions/' + this.crossPageInformation.currentUser.login).subscribe(
       (game) => {
         if (game == null) {
         }
         else {
-          alert(game);
+          this.playedGames = game;
         }
       },
       err => {alert('соединение с сервером потеряно'); }

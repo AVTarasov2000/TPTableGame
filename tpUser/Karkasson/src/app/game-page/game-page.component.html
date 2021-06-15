@@ -52,11 +52,11 @@
         <span class="text-muted">Your Games</span>
         <span class="badge badge-secondary badge-pill">0</span>
       </h4>
-      <ul class="list-group mb-3">
+      <ul class="list-group mb-3" *ngIf="crossPageInformation.currentUser">
 
 
         <li class="list-group-item d-flex justify-content-between lh-condensed"
-            *ngFor="let game of playedGames"  (click)="log('fff1')">
+            *ngFor="let game of playedGames">
           <div>
             <h6 class="my-0">{{game.name}}</h6>
             <small class="text-muted">
@@ -64,7 +64,7 @@
               <span *ngIf="!game.isVin">проиграна</span>
             </small>
           </div>
-          <span class="text-muted">счет: {{game.score}}</span>
+<!--          <span class="text-muted">счет: {{game.score}}</span>-->
         </li>
 
 

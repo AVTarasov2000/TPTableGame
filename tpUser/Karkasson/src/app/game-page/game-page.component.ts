@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Game} from '../classes/game';
 import {PlayedGame} from '../classes/played-game';
 import {CrossPageInformation} from '../services/crossPageInformation';
+import {Session} from '../classes/Session';
 
 @Component({
   selector: 'app-game-page',
@@ -31,6 +32,7 @@ export class GamePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.crossPageInformation.chosedGame);
     this.game = this.crossPageInformation.chosedGame;
     if (!this.game.rules) {
       this.http.post<Game>('http://localhost:8080/app/game', this.game).subscribe(
@@ -46,19 +48,18 @@ export class GamePageComponent implements OnInit {
         }
       );
     }
-    // this.playedGames.push(new PlayedGame('playedName1', 420, true),
-    //   new PlayedGame('playedName2', 69, false));
-    // this.http.post<Game>('http://localhost:8080/app/game/playedGames', this.game).subscribe(
-    //   (game) => {
-    //     if (game == null) {
-    //       alert('неверный пароль');
-    //     }
-    //     else {
-    //       this.game = game;
-    //     }
-    //   },
-    //   err => {alert('соединение с сервером потеряно'); }
-    // );
+    this.playedGames.push(new PlayedGame('Gamers', 420, true),
+      new PlayedGame('Gamers', 69, false));
+    this.http.get<Session[]>('http://localhost:8080/app/sessions/' + this.crossPageInformation.currentUser.login).subscribe(
+      (game) => {
+        if (game == null) {
+        }
+        else {
+          alert(game);
+        }
+      },
+      err => {alert('соединение с сервером потеряно'); }
+    );
   }
 
 }

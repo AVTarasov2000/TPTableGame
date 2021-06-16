@@ -1,0 +1,23 @@
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <style type="text/css">
+    .base { stroke-width:2;  stroke:#000000; fill:#66cc00; }
+    .rive { stroke-width:10; stroke:#0000ff;               }
+  </style>
+
+  <defs>
+    <rect   id="square"  x="-30" y="-30" width="60" height="60"/>
+    <use    id="base"    xlink:href="#square" class="base"/>
+    <path id="rive_1"  d="M 1,5 A 5,5 0 1 0 0,5 V 30" class="rive"/>
+    <g id="tile_a">
+      <use xlink:href="#base"/>
+      <use xlink:href="#rive_1"/>
+    </g>
+  </defs>
+
+  <g transform="translate(30,30)">
+    <use xlink:href="#tile_a"/>
+  </g>
+</svg>

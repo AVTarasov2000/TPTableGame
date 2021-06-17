@@ -15,3 +15,4 @@
 * [Отчет о проведенных работах на 07.05.2021](https://github.com/AVTarasov2000/TPTableGame/blob/main/Documentation/Отчет%20о%20проведенных%20работах.pdf)
 * [Диаграммы в формате jpeg](https://github.com/AVTarasov2000/TPTableGame/tree/main/Documentation/Diagrams)
 * [Презентация pdf](https://github.com/AVTarasov2000/TPTableGame/blob/main/Documentation/Презентация.pdf)
+* [Презентация видео](https://disk.yandex.ru/i/aFIcBtoeytvXAQ)

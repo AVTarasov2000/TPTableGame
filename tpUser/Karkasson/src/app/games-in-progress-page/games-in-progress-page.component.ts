@@ -23,7 +23,7 @@ export class GamesInProgressPageComponent implements OnInit {
     if (this.crossPageInformation.chosedGame.id) {
       id = this.crossPageInformation.chosedGame.id.toString();
     }
-    this.http.get<Room[]>('http://abdyabdya.duckdns.org:27050/app/activeSessions/' + id).subscribe(
+    this.http.get<Room[]>('https://abdyabdya.duckdns.org:27050/app/activeSessions/' + id).subscribe(
       (rooms) => {
         if (rooms == null) {
           alert('неверный');

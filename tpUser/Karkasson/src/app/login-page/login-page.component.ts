@@ -39,13 +39,13 @@ export class LoginPageComponent implements OnInit {
     else {
       const user = {name: userName, login: login, password: password};
       let result = false;
-      this.http.post<LoginUserDto>('http://abdyabdya.duckdns.org:27050/app/register', user).subscribe(
+      this.http.post<LoginUserDto>('https://abdyabdya.duckdns.org:27050/app/register', user).subscribe(
         (e) => {
           if (e == null) {
             alert('ошибка регистрации');
           } else {
             this.crossPageInformation.currentUser = e;
-            this.http.get<Game[]>('http://abdyabdya.duckdns.org:27050/app/games').subscribe(
+            this.http.get<Game[]>('https://abdyabdya.duckdns.org:27050/app/games').subscribe(
               (games) => {
                 if (games == null) {
                   alert('неверный пароль');

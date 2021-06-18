@@ -31,7 +31,7 @@ export class MainPageComponent implements OnInit {
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
   ngOnInit(): void {
-    this.http.get<Game[]>('http://abdyabdya.duckdns.org:27050/app/games').subscribe(
+    this.http.get<Game[]>('https://abdyabdya.duckdns.org:27050/app/games').subscribe(
       (games) => {
         if (games == null) {
           alert('неверный пароль');

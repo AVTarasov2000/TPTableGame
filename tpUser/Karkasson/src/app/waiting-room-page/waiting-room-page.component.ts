@@ -49,7 +49,7 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
   doYouNeedToDeleteYourUserData = false;
 
   onEasyStart(): void{
-    this.http.post<User>('http://abdyabdya.duckdns.org:27050/app/generate/user',
+    this.http.post<User>('https://abdyabdya.duckdns.org:27050/app/generate/user',
       {login: this.login} ).subscribe(
       (user) => {
         this.crossPageInformation.currentUser = user;
@@ -156,14 +156,14 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
     if (this.doYouNeedToDeleteYourUserData) {
       const user = new User('', this.crossPageInformation.currentUser.login, '');
-      this.http.post<User>('http://abdyabdya.duckdns.org:27050/app/user/delete', user);
+      this.http.post<User>('https://abdyabdya.duckdns.org:27050/app/user/delete', user);
       this.crossPageInformation.currentUser = null;
     }
   }
 
   public trySignIn(userName: string, login: string, password: string): void{
     const user = new User(userName, login, password);
-    this.http.post<User>('http://abdyabdya.duckdns.org:27050/app/login/authentication', user).subscribe(
+    this.http.post<User>('https://abdyabdya.duckdns.org:27050/app/login/authentication', user).subscribe(
       (e) => {
         if (e == null) {
           alert('ошибка входа');

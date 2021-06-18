@@ -35,7 +35,7 @@ export class GamePageComponent implements OnInit {
     console.log(this.crossPageInformation.chosedGame);
     this.game = this.crossPageInformation.chosedGame;
     if (!this.game.rules) {
-      this.http.post<Game>('http://abdyabdya.duckdns.org:27050/app/game', this.game).subscribe(
+      this.http.post<Game>('https://abdyabdya.duckdns.org:27050/app/game', this.game).subscribe(
         (game) => {
           if (game == null) {
             alert('неверный пароль');
@@ -50,7 +50,7 @@ export class GamePageComponent implements OnInit {
     }
     // this.playedGames.push(new PlayedGame('Gamers', 420, true),
     //   new PlayedGame('Gamers', 69, false));
-    this.http.get<Session[]>('http://abdyabdya.duckdns.org:27050/app/sessions/' + this.crossPageInformation.currentUser.login).subscribe(
+    this.http.get<Session[]>('https://abdyabdya.duckdns.org:27050/app/sessions/' + this.crossPageInformation.currentUser.login).subscribe(
       (game) => {
         if (game == null) {
         }

@@ -89,7 +89,7 @@ class MainPageComponent {
         });
     }
     ngOnInit() {
-        this.http.get('http://localhost:8080/app/games').subscribe((games) => {
+        this.http.get('http://abdyabdya.duckdns.org:27050/app/games').subscribe((games) => {
             if (games == null) {
                 alert('неверный пароль');
             }
@@ -180,7 +180,7 @@ class UserPageComponent {
     }
     changeName() {
         const user = { name: this.newName, login: this.crossPageInformation.currentUser.login, password: this.password };
-        this.http.post('http://localhost:8080/app/update/name', user).subscribe((e) => {
+        this.http.post('http://abdyabdya.duckdns.org:27050/app/update/name', user).subscribe((e) => {
             if (e == null) {
                 alert('неверный пароль');
             }
@@ -204,7 +204,7 @@ class UserPageComponent {
     changePass() {
         // todo
         const user = { name: this.newName, login: this.crossPageInformation.currentUser.login, password: this.password, newPassword: this.newPassword };
-        this.http.post('http://localhost:8080/app/update/password', user).subscribe((e) => {
+        this.http.post('http://abdyabdya.duckdns.org:27050/app/update/password', user).subscribe((e) => {
             if (e == null) {
                 alert('ошибка пароль');
             }
@@ -664,7 +664,7 @@ class HistoryPageComponent {
         this.sessions = [];
     }
     ngOnInit() {
-        this.http.get('http://localhost:8080/app/sessions/'
+        this.http.get('http://abdyabdya.duckdns.org:27050/app/sessions/'
             + this.crossPageInformation.currentUser.login).subscribe((sessions) => {
             if (sessions == null) {
                 alert('неверный');
@@ -735,13 +735,13 @@ class SignInPageComponent {
     }
     trySignIn(userName, login, password) {
         const user = new _classes_user__WEBPACK_IMPORTED_MODULE_0__["User"](userName, login, password);
-        this.http.post('http://localhost:8080/app/login/authentication', user).subscribe((e) => {
+        this.http.post('http://abdyabdya.duckdns.org:27050/app/login/authentication', user).subscribe((e) => {
             if (e == null) {
                 alert('ошибка входа');
             }
             else {
                 this.crossPageInformation.currentUser = e;
-                this.http.get('http://localhost:8080/app/games').subscribe((games) => {
+                this.http.get('http://abdyabdya.duckdns.org:27050/app/games').subscribe((games) => {
                     if (games == null) {
                         alert('неверный пароль');
                     }
@@ -1106,7 +1106,7 @@ class GamesInProgressPageComponent {
         if (this.crossPageInformation.chosedGame.id) {
             id = this.crossPageInformation.chosedGame.id.toString();
         }
-        this.http.get('http://localhost:8080/app/activeSessions/' + id).subscribe((rooms) => {
+        this.http.get('http://abdyabdya.duckdns.org:27050/app/activeSessions/' + id).subscribe((rooms) => {
             if (rooms == null) {
                 alert('неверный');
             }
@@ -1477,7 +1477,7 @@ class WaitingRoomPageComponent {
         this.doYouNeedToDeleteYourUserData = false;
     }
     onEasyStart() {
-        this.http.post('http://localhost:8080/app/generate/user', { login: this.login }).subscribe((user) => {
+        this.http.post('http://abdyabdya.duckdns.org:27050/app/generate/user', { login: this.login }).subscribe((user) => {
             this.crossPageInformation.currentUser = user;
         }, err => { alert('соединение с сервером потеряно'); });
         this.saveUsername();
@@ -1570,13 +1570,13 @@ class WaitingRoomPageComponent {
         this.subscriptions.unsubscribe();
         if (this.doYouNeedToDeleteYourUserData) {
             const user = new _classes_user__WEBPACK_IMPORTED_MODULE_2__["User"]('', this.crossPageInformation.currentUser.login, '');
-            this.http.post('http://localhost:8080/app/user/delete', user);
+            this.http.post('http://abdyabdya.duckdns.org:27050/app/user/delete', user);
             this.crossPageInformation.currentUser = null;
         }
     }
     trySignIn(userName, login, password) {
         const user = new _classes_user__WEBPACK_IMPORTED_MODULE_2__["User"](userName, login, password);
-        this.http.post('http://localhost:8080/app/login/authentication', user).subscribe((e) => {
+        this.http.post('http://abdyabdya.duckdns.org:27050/app/login/authentication', user).subscribe((e) => {
             if (e == null) {
                 alert('ошибка входа');
             }
@@ -1588,7 +1588,7 @@ class WaitingRoomPageComponent {
         });
     }
     copyLink() {
-        this.clipboardService.copy('http://localhost:4200/waitingRoom/' + this.crossPageInformation.room);
+        this.clipboardService.copy('https://avtarasov2000.github.io/waitingRoom/' + this.crossPageInformation.room);
     }
     signIn() {
         this.trySignIn('', this.login, this.password);
@@ -1834,7 +1834,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "myRxStompConfig", function() { return myRxStompConfig; });
 const myRxStompConfig = {
     // Which server?
-    brokerURL: 'ws://localhost:8080/ws',
+    brokerURL: 'ws://abdyabdya.duckdns.org:27050/ws',
     // Headers
     // Typical keys: login, passcode, host
     connectHeaders: {
@@ -1962,7 +1962,7 @@ class GamePageComponent {
         console.log(this.crossPageInformation.chosedGame);
         this.game = this.crossPageInformation.chosedGame;
         if (!this.game.rules) {
-            this.http.post('http://localhost:8080/app/game', this.game).subscribe((game) => {
+            this.http.post('http://abdyabdya.duckdns.org:27050/app/game', this.game).subscribe((game) => {
                 if (game == null) {
                     alert('неверный пароль');
                 }
@@ -1975,7 +1975,7 @@ class GamePageComponent {
         }
         // this.playedGames.push(new PlayedGame('Gamers', 420, true),
         //   new PlayedGame('Gamers', 69, false));
-        this.http.get('http://localhost:8080/app/sessions/' + this.crossPageInformation.currentUser.login).subscribe((game) => {
+        this.http.get('http://abdyabdya.duckdns.org:27050/app/sessions/' + this.crossPageInformation.currentUser.login).subscribe((game) => {
             if (game == null) {
             }
             else {
@@ -2229,13 +2229,13 @@ class LoginPageComponent {
         else {
             const user = { name: userName, login: login, password: password };
             let result = false;
-            this.http.post('http://localhost:8080/app/register', user).subscribe((e) => {
+            this.http.post('http://abdyabdya.duckdns.org:27050/app/register', user).subscribe((e) => {
                 if (e == null) {
                     alert('ошибка регистрации');
                 }
                 else {
                     this.crossPageInformation.currentUser = e;
-                    this.http.get('http://localhost:8080/app/games').subscribe((games) => {
+                    this.http.get('http://abdyabdya.duckdns.org:27050/app/games').subscribe((games) => {
                         if (games == null) {
                             alert('неверный пароль');
                         }

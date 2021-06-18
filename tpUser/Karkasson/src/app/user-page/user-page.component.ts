@@ -27,7 +27,7 @@ export class UserPageComponent implements OnInit {
 
   changeName(): void {
     const user = {name: this.newName, login: this.crossPageInformation.currentUser.login, password: this.password};
-    this.http.post<User>('http://localhost:8080/app/update/name', user).subscribe(
+    this.http.post<User>('http://abdyabdya.duckdns.org:27050/app/update/name', user).subscribe(
       (e) => {
         if (e == null) {
           alert('неверный пароль');
@@ -57,7 +57,7 @@ export class UserPageComponent implements OnInit {
   changePass(): void {
     // todo
     const user = {name: this.newName, login: this.crossPageInformation.currentUser.login, password: this.password, newPassword: this.newPassword};
-    this.http.post<User>('http://localhost:8080/app/update/password', user).subscribe(
+    this.http.post<User>('http://abdyabdya.duckdns.org:27050/app/update/password', user).subscribe(
       (e) => {
         if (e == null) {
           alert('ошибка пароль');

@@ -17,7 +17,7 @@ export class HistoryPageComponent implements OnInit {
   sessions: Session[] = [];
 
   ngOnInit(): void {
-    this.http.get<Session[]>('http://localhost:8080/app/sessions/'
+    this.http.get<Session[]>('http://abdyabdya.duckdns.org:27050/app/sessions/'
       + this.crossPageInformation.currentUser.login).subscribe(
       (sessions) => {
         if (sessions == null) {

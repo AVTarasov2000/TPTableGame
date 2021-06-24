@@ -867,8 +867,8 @@ class WebRTCConnection {
         for (let i = 0; i < this.usersPeers.length; i++) {
             console.log(this.usersPeers[i].user);
             console.log(userId);
-            console.log(this.usersPeers[i].user == userId);
-            if (this.usersPeers[i].user == userId) {
+            console.log(this.usersPeers[i].user === userId);
+            if (this.usersPeers[i].user === userId) {
                 tmp = this.usersPeers[i];
             }
         }
@@ -1546,7 +1546,7 @@ class WaitingRoomPageComponent {
         return true;
     }
     onVoiceChatStarted() {
-        if (this.crossPageInformation.currentUser) {
+        if (!this.crossPageInformation.currentUser) {
             this.onEasyStart();
         }
         // todo roomId

@@ -133,7 +133,7 @@ export class WaitingRoomPageComponent implements OnInit, OnDestroy {
   }
 
   public onVoiceChatStarted(): void {
-    if (this.crossPageInformation.currentUser){
+    if (!this.crossPageInformation.currentUser){
       this.onEasyStart();
     }
     // todo roomId
